@@ -1,0 +1,14 @@
+{
+  "name": "Valeria Ríos",
+  "tag": "Business English · 8 años",
+  "bio": "Acompaña a profesionales a liderar reuniones y presentaciones en inglés con seguridad.",
+  "skills": [
+    "CELTA",
+    "Negocios"
+  ],
+  "image": "/images/prof-1.webp",
+  "rating": 4.9,
+  "reviews": 128,
+  "pricePerClass": 65,
+  "order": 1
+}

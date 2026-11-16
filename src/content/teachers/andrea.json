@@ -1,0 +1,14 @@
+{
+  "name": "Andrea Salas",
+  "tag": "Exámenes internacionales · 9 años",
+  "bio": "Prepara a estudiantes para TOEFL e IELTS con estrategia, simulacros y feedback detallado.",
+  "skills": [
+    "IELTS",
+    "TOEFL"
+  ],
+  "image": "/images/prof-4.webp",
+  "rating": 4.8,
+  "reviews": 87,
+  "pricePerClass": 75,
+  "order": 4
+}

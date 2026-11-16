@@ -1,0 +1,17 @@
+{
+  "title": "Talento Digital & Tech · U. Católica",
+  "kicker": "Conversatorio",
+  "upcoming": false,
+  "startDate": "2026-02-15T05:00:00.000Z",
+  "dateLabel": "Feb 2026",
+  "mode": "Presencial",
+  "place": "Universidad Católica",
+  "image": "/images/events/talento-digital.webp",
+  "gallery": [
+    "/images/events/talento-digital.webp",
+    "/images/events/conversatorio.webp"
+  ],
+  "excerpt": "Estudiantes de tecnología conversan con profesionales del sector sobre cómo el inglés impulsa su perfil profesional.",
+  "attendees": 70,
+  "nps": 79
+}

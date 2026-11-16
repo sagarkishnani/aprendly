@@ -1,30 +1,74 @@
 {
   "nav": {
+    "logo": "/images/logo.svg",
     "logoAlt": "Aprendly",
     "links": [
-      { "label": "Inicio", "url": "/" },
-      { "label": "Nosotros", "url": "/#features" },
-      { "label": "Contacto", "url": "/#cta" }
+      {
+        "label": "Cursos",
+        "url": "/cursos",
+        "children": [
+          { "label": "Todos los cursos", "description": "Explora el catálogo completo", "url": "/cursos" },
+          { "label": "Cursos grupales en vivo", "description": "Máx. 8 alumnos por clase", "url": "/cursos?tipo=grupal" },
+          { "label": "Clases 1 a 1", "description": "Paquetes de horas a tu ritmo", "url": "/cursos?tipo=1a1" },
+          { "label": "Preparación de exámenes", "description": "TOEFL, IELTS y Cambridge", "url": "/cursos?objetivo=examenes" },
+          { "label": "Talleres y recursos", "description": "Eventos, clubs y ebooks", "url": "/cursos?tipo=taller" }
+        ]
+      },
+      { "label": "Ruta de aprendizaje", "url": "/ruta-de-aprendizaje" },
+      { "label": "Nosotros", "url": "/nosotros" },
+      { "label": "Para empresas", "url": "/empresas" }
     ],
-    "cta": { "label": "Conversemos", "url": "/#cta" }
+    "cta": { "label": "Contacto", "url": "/contacto" }
   },
   "footer": {
-    "tagline": "Academia de inglés online en vivo: cursos grupales, clases 1 a 1 y preparación de exámenes internacionales.",
+    "tagline": "Rutas de aprendizaje, clases personalizadas y programas para organizaciones. Aprende inglés con propósito.",
     "columns": [
       {
-        "title": "Sitio",
+        "title": "Aprende",
         "links": [
-          { "label": "Inicio", "url": "/" },
-          { "label": "Contacto", "url": "/#cta" }
+          { "label": "Cursos grupales", "url": "/cursos?tipo=grupal" },
+          { "label": "Clases 1 a 1", "url": "/cursos?tipo=1a1" },
+          { "label": "Ruta de aprendizaje", "url": "/ruta-de-aprendizaje" },
+          { "label": "Talleres y recursos", "url": "/cursos?tipo=taller" }
+        ]
+      },
+      {
+        "title": "Organizaciones",
+        "links": [
+          { "label": "Solicitar propuesta", "url": "/empresas#propuesta" }
+        ]
+      },
+      {
+        "title": "Aprendly",
+        "links": [
+          { "label": "Nosotros", "url": "/nosotros" },
+          { "label": "Eventos", "url": "/eventos" },
+          { "label": "Blog", "url": "/blog" },
+          { "label": "Contacto", "url": "/contacto" },
+          { "label": "Libro de reclamaciones", "url": "/contacto" }
         ]
       }
     ],
-    "social": [],
-    "legal": "© 2026 Aprendly. Todos los derechos reservados."
+    "social": [
+      { "network": "facebook", "url": "https://www.facebook.com/profile.php?id=61555259054732" },
+      { "network": "instagram", "url": "https://www.instagram.com/aprendly.now/" },
+      { "network": "tiktok", "url": "" },
+      { "network": "linkedin", "url": "" }
+    ],
+    "legal": "© 2026 Aprendly · Todos los derechos reservados",
+    "creditLabel": "Desarrollado por",
+    "creditUrl": "https://twinstudios.pe"
+  },
+  "whatsapp": {
+    "enabled": true,
+    "phone": "",
+    "message": "Hola Aprendly, quiero hablar con un asesor",
+    "bubbleTitle": "¿Tienes dudas?",
+    "bubbleText": "Escríbele a un asesor"
   },
   "seo": {
-    "title": "Aprendly",
-    "description": "Academia de inglés online en vivo: cursos grupales, clases 1 a 1 y preparación de exámenes internacionales."
+    "title": "Aprendly · Aprende inglés con una ruta hecha para ti",
+    "description": "Academia de inglés online en vivo: cursos grupales, clases 1 a 1, preparación de exámenes internacionales y programas para empresas."
   },
   "codeInjection": { "head": "", "bodyEnd": "" }
 }

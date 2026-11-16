@@ -1,0 +1,17 @@
+{
+  "title": "Oportunidades Globales · UTP",
+  "kicker": "Workshop",
+  "upcoming": false,
+  "startDate": "2026-06-15T05:00:00.000Z",
+  "dateLabel": "Jun 2026",
+  "mode": "Presencial",
+  "place": "UTP Centro de Lima",
+  "image": "/images/events/pasaporte-grupo.webp",
+  "gallery": [
+    "/images/events/pasaporte-panel.webp",
+    "/images/events/pasaporte-grupo.webp"
+  ],
+  "excerpt": "Pasaporte Aprendly: expertos de GiraLab, Emprende Ninja y LEAD muestran a estudiantes de carreras digitales las oportunidades globales a las que pueden acceder y cómo llegar a ellas.",
+  "attendees": 205,
+  "nps": 82
+}

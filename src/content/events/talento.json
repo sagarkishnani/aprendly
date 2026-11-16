@@ -1,0 +1,17 @@
+{
+  "title": "Empleabilidad Global · AFP Integra",
+  "kicker": "Programa Talento Imparable",
+  "upcoming": false,
+  "startDate": "2026-01-15T05:00:00.000Z",
+  "dateLabel": "Ene 2026",
+  "mode": "Online",
+  "place": "AFP Integra · Zoom",
+  "image": "/images/events/talento.webp",
+  "gallery": [
+    "/images/events/talento.webp",
+    "/images/events/masterclass.webp"
+  ],
+  "excerpt": "Estudiantes y profesionales que quieren postular no solo a empleos nacionales, sino también globales, y volver sus perfiles más internacionales.",
+  "attendees": 110,
+  "nps": 84
+}

@@ -7,14 +7,15 @@ import { getLocale, tField } from "../utils/i18n";
 import { isLocale } from "../i18n/config";
 import "../styles/global.css";
 import CookieConsent from "../components/cookies/CookieConsent.astro";
+import WhatsAppButton from "../components/shared/WhatsAppButton.astro";
 
 interface Props {
   title?: string;
   description?: string;
-  headerTheme?: "light" | "dark";
+  noindex?: boolean;
 }
 
-const { title, description, headerTheme = "dark" } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : getLocale(Astro.url);
 
@@ -64,6 +65,7 @@ try {
     <title>{seoTitle}</title>
     <meta name="description" content={seoDescription} />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={seoTitle} />
@@ -75,7 +77,7 @@ try {
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" />
 
     <ClientRouter />
     <Fragment set:html={injectHead} />
@@ -97,17 +99,19 @@ try {
       </main>
     ) : (
       <>
-        <Header locale={locale} theme={headerTheme} />
+        <Header locale={locale} />
         <main>
           <slot />
         </main>
         <Footer locale={locale} />
+        <WhatsAppButton />
         <CookieConsent />
       </>
     )}
     <Fragment set:html={injectBodyEnd} />
     <script>
       import Lenis from "lenis";
+      import { startMotion } from "../scripts/motion";
 
       let lenis: any = null;
 
@@ -123,6 +127,7 @@ try {
       }
 
       startLenis();
+      startMotion();
       document.addEventListener("astro:after-swap", startLenis);
     </script>
   </body>

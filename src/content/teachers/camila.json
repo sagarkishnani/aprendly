@@ -1,0 +1,14 @@
+{
+  "name": "Camila Torres",
+  "tag": "Conversación · 6 años",
+  "bio": "Especialista en fluidez y pronunciación para que hables con naturalidad desde la primera clase.",
+  "skills": [
+    "Cambridge C2",
+    "Conversación"
+  ],
+  "image": "/images/prof-2.webp",
+  "rating": 5,
+  "reviews": 96,
+  "pricePerClass": 70,
+  "order": 2
+}

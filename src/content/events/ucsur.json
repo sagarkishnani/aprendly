@@ -1,0 +1,16 @@
+{
+  "title": "English for Engineers · UCSUR",
+  "kicker": "Bootcamp",
+  "upcoming": false,
+  "startDate": "2026-03-15T05:00:00.000Z",
+  "dateLabel": "Mar 2026",
+  "mode": "Presencial",
+  "place": "Universidad Científica del Sur",
+  "image": "/images/events/ucsur.webp",
+  "gallery": [
+    "/images/events/ucsur.webp"
+  ],
+  "excerpt": "Estudiantes y profesionales de ingeniería con nivel A2 mínimo resuelven casos reales de ingeniería mientras practican inglés.",
+  "attendees": 60,
+  "nps": 80
+}

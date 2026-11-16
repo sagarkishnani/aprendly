@@ -1,0 +1,16 @@
+{
+  "title": "Oportunidades Internacionales",
+  "kicker": "Webinar",
+  "upcoming": false,
+  "startDate": "2026-05-15T05:00:00.000Z",
+  "dateLabel": "May 2026",
+  "mode": "Online",
+  "place": "Google Meet",
+  "image": "/images/events/oportunidades.webp",
+  "gallery": [
+    "/images/events/oportunidades.webp"
+  ],
+  "excerpt": "Miura Fernández comparte cómo preparar tu inglés para becas, intercambios y trabajos en el extranjero.",
+  "attendees": 85,
+  "nps": 78
+}

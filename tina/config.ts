@@ -7,9 +7,18 @@ import { dynamicFormsCollection } from "./collections/dynamicForms";
 import { shopCollection } from "./collections/shop";
 import { maintenanceCollection } from "./collections/maintenance";
 import { cookieConsentCollection } from "./collections/cookieConsent";
+import { courseCollection } from "./collections/course";
+import { teacherCollection } from "./collections/teacher";
+import { testimonialCollection } from "./collections/testimonial";
+import { eventCollection } from "./collections/event";
+import { cursosPageCollection } from "./collections/cursosPage";
+import { rutaPageCollection } from "./collections/rutaPage";
+import { nosotrosPageCollection } from "./collections/nosotrosPage";
+import { empresasPageCollection } from "./collections/empresasPage";
+import { eventosPageCollection } from "./collections/eventosPage";
+import { contactoPageCollection } from "./collections/contactoPage";
 
 export default defineConfig({
-  // Baked into the generated client at build time; NOT read at runtime.
   branch: process.env.TINA_BRANCH || "staging",
   clientId: process.env.TINA_CLIENT_ID || "",
   token: process.env.TINA_TOKEN || "",
@@ -30,6 +39,16 @@ export default defineConfig({
     collections: [
       globalCollection,
       homeCollection,
+      courseCollection,
+      teacherCollection,
+      testimonialCollection,
+      eventCollection,
+      cursosPageCollection,
+      rutaPageCollection,
+      nosotrosPageCollection,
+      empresasPageCollection,
+      eventosPageCollection,
+      contactoPageCollection,
       postCollection,
       formConfigCollection,
       dynamicFormsCollection,

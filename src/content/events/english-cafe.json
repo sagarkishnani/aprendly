@@ -1,0 +1,16 @@
+{
+  "title": "Coffee Talk · Don Gutto",
+  "kicker": "Coffee talk",
+  "upcoming": false,
+  "startDate": "2026-04-15T05:00:00.000Z",
+  "dateLabel": "Abr 2026",
+  "mode": "Presencial",
+  "place": "Don Gutto · Work Café, Lima",
+  "image": "/images/events/english-cafe.webp",
+  "gallery": [
+    "/images/events/english-cafe.webp"
+  ],
+  "excerpt": "Una tarde de café y conversación 100% en inglés con alumnos de todos los niveles.",
+  "attendees": 24,
+  "nps": 91
+}

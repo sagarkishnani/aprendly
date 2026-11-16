@@ -1,0 +1,18 @@
+{
+  "title": "Go Global · Innova ULima",
+  "kicker": "Taller inmersivo",
+  "upcoming": false,
+  "startDate": "2026-10-15T05:00:00.000Z",
+  "dateLabel": "Oct 2026",
+  "mode": "Presencial",
+  "place": "Innova ULima · Centro de Emprendimiento",
+  "image": "/images/events/go-global.webp",
+  "gallery": [
+    "/images/events/go-global.webp",
+    "/images/events/go-global-taller.webp"
+  ],
+  "excerpt": "Estudiantes y profesionales de ingeniería con nivel A2 resuelven casos reales en inglés, con invitados especiales de Webflow Perú y Figma Perú.",
+  "attendees": 28,
+  "registered": 75,
+  "nps": 86
+}

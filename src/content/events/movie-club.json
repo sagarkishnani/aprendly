@@ -1,0 +1,61 @@
+{
+  "title": "Movie Club: The Substance",
+  "kicker": "Próximo evento",
+  "upcoming": true,
+  "startDate": "2026-11-07T05:00:00.000Z",
+  "dateLabel": "Sáb 7 – 28 nov 2026",
+  "mode": "Online en vivo",
+  "place": "Zoom",
+  "image": "/images/stock/1489599849927-2ee91cede3ba.webp",
+  "gallery": [],
+  "excerpt": "Una película, cuatro sábados y mucha conversación. Usamos el cine como punto de partida para opinar, debatir y hablar en inglés el 100% del tiempo.",
+  "time": "10:30 a.m. – 12:00 p.m.",
+  "levels": "A2, B1 y B2",
+  "price": 95,
+  "priceNote": "por 4 sesiones",
+  "seats": "Cupos limitados",
+  "intro": "Usamos la película como punto de partida para opinar, debatir y hablar en inglés el 100% del tiempo. No necesitas tener vocabulario de cine: solo ganas de hablar.",
+  "note": "Película para público adulto.",
+  "flow": [
+    {
+      "title": "Antes de clase",
+      "text": "Ves la parte de la película de esa semana y completas las actividades de tu workbook."
+    },
+    {
+      "title": "En clase",
+      "text": "90 minutos en vivo de debates, juegos de rol y dinámicas en grupo, todo en inglés."
+    },
+    {
+      "title": "Después",
+      "text": "Fichas cortas de reflexión para repasar y llegar con preguntas a la siguiente sesión."
+    }
+  ],
+  "sessions": [
+    {
+      "date": "Sáb 7 nov",
+      "title": "The Deal",
+      "text": "Fama, edad y el miedo a ser reemplazada."
+    },
+    {
+      "date": "Sáb 14 nov",
+      "title": "The Better Version",
+      "text": "Espejos, identidad y la versión ideal de uno mismo."
+    },
+    {
+      "date": "Sáb 21 nov",
+      "title": "Breaking the Balance",
+      "text": "Reglas, control, color y sonido."
+    },
+    {
+      "date": "Sáb 28 nov",
+      "title": "The Show Must Go On",
+      "text": "El final, la sátira y tu propia respuesta creativa."
+    }
+  ],
+  "includes": [
+    "4 sesiones en vivo de 90 minutos",
+    "Workbook con actividades para antes, durante y después de ver la película",
+    "Vocabulario y frases útiles en cada sesión",
+    "Preguntas y retos según tu nivel: Starter (A2), Builder (B1) y Challenge (B2)"
+  ]
+}

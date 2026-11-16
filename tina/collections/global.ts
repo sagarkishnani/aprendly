@@ -24,6 +24,18 @@ export const globalCollection: Collection = {
             { name: "label", label: "Texto", type: "string" },
             { name: "url", label: "URL", type: "string" },
             { name: "external", label: "Abre en otra pestaña", type: "boolean" },
+            {
+              type: "object",
+              name: "children",
+              label: "Submenú",
+              list: true,
+              ui: { itemProps: (item) => ({ label: item?.label || "Opción" }) },
+              fields: [
+                { name: "label", label: "Texto", type: "string" },
+                { name: "description", label: "Descripción corta", type: "string" },
+                { name: "url", label: "URL", type: "string" },
+              ],
+            },
           ],
         },
         {
@@ -81,6 +93,20 @@ export const globalCollection: Collection = {
           ],
         },
         { name: "legal", label: "Línea legal", type: "string" },
+        { name: "creditLabel", label: "Texto del crédito", type: "string" },
+        { name: "creditUrl", label: "Enlace del crédito", type: "string" },
+      ],
+    },
+    {
+      type: "object",
+      name: "whatsapp",
+      label: "Botón de WhatsApp",
+      fields: [
+        { name: "enabled", label: "Mostrar", type: "boolean" },
+        { name: "phone", label: "Número con código de país, sin + ni espacios", type: "string" },
+        { name: "message", label: "Mensaje inicial", type: "string" },
+        { name: "bubbleTitle", label: "Título de la burbuja", type: "string" },
+        { name: "bubbleText", label: "Texto de la burbuja", type: "string" },
       ],
     },
     {

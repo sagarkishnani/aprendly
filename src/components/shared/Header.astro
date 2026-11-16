@@ -1,14 +1,14 @@
 ---
 import HeaderReact from "./HeaderReact";
 import client from "../../../tina/__generated__/client";
+import { wooConfigured } from "../../lib/woo/rest";
 import type { Locale } from "../../i18n/config";
 
 interface Props {
   locale: Locale;
-  theme?: "light" | "dark";
 }
 
-const { locale, theme = "dark" } = Astro.props;
+const { locale } = Astro.props;
 
 const result = await client.queries.global({ relativePath: "index.json" });
 ---
@@ -18,6 +18,7 @@ const result = await client.queries.global({ relativePath: "index.json" });
   variables={result.variables}
   data={result.data}
   locale={locale}
-  theme={theme}
+  currentPath={Astro.url.pathname}
+  shopEnabled={wooConfigured}
   client:load
 />

@@ -1,0 +1,58 @@
+import type { Collection } from "tinacms";
+
+export const eventCollection: Collection = {
+  name: "event",
+  label: "Eventos",
+  path: "src/content/events",
+  format: "json",
+  ui: {
+    router: ({ document }) => `/eventos/${document._sys.filename}`,
+  },
+  fields: [
+    { name: "title", label: "Título", type: "string", isTitle: true, required: true },
+    { name: "kicker", label: "Tipo de evento", type: "string", description: "Ej.: Taller inmersivo, Webinar" },
+    { name: "upcoming", label: "Es el próximo evento", type: "boolean" },
+    { name: "startDate", label: "Fecha de inicio (para ordenar)", type: "datetime" },
+    { name: "dateLabel", label: "Fecha visible", type: "string", description: "Ej.: Sáb 7 – 28 nov 2026" },
+    { name: "time", label: "Horario", type: "string" },
+    { name: "mode", label: "Modalidad", type: "string", options: ["Online en vivo", "Online", "Presencial", "Híbrido"] },
+    { name: "place", label: "Lugar o plataforma", type: "string" },
+    { name: "levels", label: "Niveles", type: "string" },
+    { name: "price", label: "Precio (S/)", type: "number" },
+    { name: "priceNote", label: "Nota del precio", type: "string" },
+    { name: "seats", label: "Aviso de cupos", type: "string" },
+    { name: "image", label: "Imagen principal", type: "image" },
+    { name: "gallery", label: "Galería", type: "image", list: true },
+    { name: "excerpt", label: "Resumen", type: "string", ui: { component: "textarea" } },
+    { name: "intro", label: "Introducción", type: "string", ui: { component: "textarea" } },
+    {
+      type: "object",
+      name: "flow",
+      label: "Cómo funciona",
+      list: true,
+      ui: { itemProps: (item) => ({ label: item?.title || "Paso" }) },
+      fields: [
+        { name: "title", label: "Título", type: "string" },
+        { name: "text", label: "Texto", type: "string", ui: { component: "textarea" } },
+      ],
+    },
+    {
+      type: "object",
+      name: "sessions",
+      label: "Sesiones",
+      list: true,
+      ui: { itemProps: (item) => ({ label: `${item?.date || ""} ${item?.title || "Sesión"}` }) },
+      fields: [
+        { name: "date", label: "Fecha", type: "string" },
+        { name: "title", label: "Título", type: "string" },
+        { name: "text", label: "Descripción", type: "string" },
+      ],
+    },
+    { name: "includes", label: "Incluye", type: "string", list: true },
+    { name: "note", label: "Nota", type: "string" },
+    { name: "attendees", label: "Asistentes", type: "number" },
+    { name: "registered", label: "Inscritos", type: "number" },
+    { name: "nps", label: "NPS", type: "number" },
+    { name: "wooProductId", label: "ID de producto en WooCommerce", type: "number" },
+  ],
+};
