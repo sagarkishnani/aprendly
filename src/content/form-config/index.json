@@ -4,7 +4,17 @@
       "formType": "contacto",
       "label": "Formulario de contacto",
       "enabled": true,
-      "recipients": ["hola@aprendlynow.com"]
+      "recipients": [
+        "hola@aprendlynow.com"
+      ]
+    },
+    {
+      "formType": "propuesta-empresas",
+      "label": "Propuesta para empresas e instituciones",
+      "enabled": true,
+      "recipients": [
+        "hola@aprendlynow.com"
+      ]
     }
   ]
 }

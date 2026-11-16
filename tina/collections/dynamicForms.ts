@@ -10,6 +10,7 @@ export const dynamicFormsCollection: Collection = {
       const slug = document._sys.filename;
       const routes: Record<string, string> = {
         contacto: "/contacto",
+        "propuesta-empresas": "/empresas",
       };
       return routes[slug] || `/${slug}`;
     },
