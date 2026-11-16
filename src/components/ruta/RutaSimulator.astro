@@ -1,0 +1,9 @@
+---
+import RutaSimulatorReact from "./RutaSimulatorReact";
+import type { TinaPageProps } from "./types";
+
+type Props = TinaPageProps;
+const { query, variables, data } = Astro.props;
+---
+
+<RutaSimulatorReact query={query} variables={variables} data={data} client:visible />

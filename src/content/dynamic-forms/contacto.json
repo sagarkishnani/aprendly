@@ -1,99 +1,130 @@
 {
   "formId": "contacto",
-  "formTitle": "¿Conversamos?",
-  "formTitle_en": "Let's talk?",
-  "description": "Completa tus datos y te respondemos pronto.",
-  "description_en": "Fill in your details and we'll get back to you soon.",
+  "formTitle": "",
+  "description": "Cuéntanos qué necesitas y un asesor te responde en menos de 24 horas.",
   "styleVariant": "contact",
-  "submitButtonText": "Enviar",
-  "submitButtonText_en": "Send",
+  "submitButtonText": "Enviar mensaje",
   "successTitle": "¡Mensaje enviado!",
-  "successTitle_en": "Message sent!",
-  "successMessage": "Gracias por escribirnos. Te contactaremos pronto.",
-  "successMessage_en": "Thanks for reaching out. We'll contact you soon.",
+  "successMessage": "Un asesor te contactará en las próximas 24 horas.",
   "errorMessage": "Ocurrió un error al enviar. Inténtalo de nuevo.",
-  "errorMessage_en": "Something went wrong. Please try again.",
   "validationMessage": "Por favor completa los campos obligatorios.",
-  "validationMessage_en": "Please complete the required fields.",
   "showCorrelativo": false,
+  "privacyText": "Al enviar aceptas nuestra política de privacidad.",
   "fields": [
     {
-      "fieldType": "text",
-      "name": "nombre",
-      "label": "Nombre",
-      "label_en": "First name",
-      "placeholder": "Tu nombre",
-      "placeholder_en": "Your first name",
+      "fieldType": "radio",
+      "name": "paraQuien",
+      "label": "¿Para quién es?",
       "required": true,
-      "width": "half",
-      "order": 1
+      "width": "full",
+      "order": 1,
+      "defaultValue": "mi",
+      "options": [
+        { "value": "mi", "label": "Para mí" },
+        { "value": "empresa", "label": "Mi empresa" },
+        { "value": "institucion", "label": "Mi institución" }
+      ]
     },
     {
       "fieldType": "text",
-      "name": "apellido",
-      "label": "Apellido",
-      "label_en": "Last name",
-      "placeholder": "Tu apellido",
-      "placeholder_en": "Your last name",
+      "name": "nombre",
+      "label": "Nombre y apellido",
+      "placeholder": "Nombre y apellido",
       "required": true,
       "width": "half",
       "order": 2
     },
     {
       "fieldType": "text",
-      "name": "empresa",
-      "label": "Empresa",
-      "label_en": "Company",
-      "placeholder": "Nombre de tu empresa",
-      "placeholder_en": "Your company name",
-      "required": false,
-      "width": "half",
-      "order": 3
-    },
-    {
-      "fieldType": "text",
       "name": "telefono",
       "label": "Teléfono",
-      "label_en": "Phone",
-      "placeholder": "999 999 999",
+      "placeholder": "Teléfono",
       "required": false,
       "width": "half",
-      "order": 4,
+      "order": 3,
       "validation": {
-        "pattern": "^[0-9+()\\\\s-]{6,20}$",
-        "patternMessage": "Ingresa un teléfono válido",
-        "patternMessage_en": "Enter a valid phone number"
+        "pattern": "^[0-9+()\\s-]{6,20}$",
+        "patternMessage": "Ingresa un teléfono válido"
       }
     },
     {
       "fieldType": "email",
       "name": "correo",
       "label": "Correo electrónico",
-      "label_en": "Email",
-      "placeholder": "nombre@empresa.com",
+      "placeholder": "Correo electrónico",
       "required": true,
       "width": "full",
-      "order": 5
+      "order": 4
+    },
+    {
+      "fieldType": "text",
+      "name": "empresa",
+      "label": "Empresa",
+      "placeholder": "Empresa",
+      "required": true,
+      "width": "half",
+      "order": 5,
+      "conditionalField": { "dependsOn": "paraQuien", "showWhen": "empresa" }
+    },
+    {
+      "fieldType": "select",
+      "name": "colaboradores",
+      "label": "Número de colaboradores",
+      "placeholder": "Elige un número de colaboradores",
+      "required": false,
+      "width": "half",
+      "order": 6,
+      "conditionalField": { "dependsOn": "paraQuien", "showWhen": "empresa" },
+      "options": [
+        { "value": "1-20", "label": "1 – 20" },
+        { "value": "21-100", "label": "21 – 100" },
+        { "value": "101-500", "label": "101 – 500" },
+        { "value": "500+", "label": "500+" }
+      ]
+    },
+    {
+      "fieldType": "text",
+      "name": "institucion",
+      "label": "Institución educativa",
+      "placeholder": "Institución educativa",
+      "required": true,
+      "width": "half",
+      "order": 7,
+      "conditionalField": { "dependsOn": "paraQuien", "showWhen": "institucion" }
+    },
+    {
+      "fieldType": "select",
+      "name": "alumnos",
+      "label": "Número de alumnos",
+      "placeholder": "Elige un número de alumnos",
+      "required": false,
+      "width": "half",
+      "order": 8,
+      "conditionalField": { "dependsOn": "paraQuien", "showWhen": "institucion" },
+      "options": [
+        { "value": "1-20", "label": "1 – 20" },
+        { "value": "21-100", "label": "21 – 100" },
+        { "value": "101-500", "label": "101 – 500" },
+        { "value": "500+", "label": "500+" }
+      ]
     },
     {
       "fieldType": "textarea",
       "name": "mensaje",
       "label": "Mensaje",
-      "label_en": "Message",
-      "placeholder": "Cuéntanos en qué podemos ayudarte",
-      "placeholder_en": "Tell us how we can help",
+      "placeholder": "¿En qué te podemos ayudar?",
       "required": true,
       "width": "full",
-      "order": 6
+      "rows": 4,
+      "order": 9
     },
     {
-      "fieldType": "checkbox",
-      "name": "aceptaPoliticas",
-      "label": "He leído y acepto la política de privacidad",
-      "label_en": "I have read and accept the privacy policy",
-      "required": true,
+      "fieldType": "hidden",
+      "name": "interes",
+      "label": "Interés",
+      "required": false,
       "width": "full",
-      "order": 7
+      "order": 10
     }
   ]
 }

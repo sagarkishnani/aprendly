@@ -52,6 +52,12 @@
   .no-scrollbar::-webkit-scrollbar { display: none; }
 }
 
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  astro-island[ssr] [data-reveal]:not([data-reveal="rise"]) {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

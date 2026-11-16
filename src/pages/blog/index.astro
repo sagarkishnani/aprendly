@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../components/blog/Breadcrumb.astro";
+import BlogCard from "../../components/blog/BlogCard.astro";
+import Eyebrow from "../../components/ui/Eyebrow";
+import ArrowLink from "../../components/ui/ArrowLink";
 import client from "../../../tina/__generated__/client";
 import { getLocale, tField } from "../../utils/i18n";
 import { isLocale } from "../../i18n/config";
-import { mediaUrl } from "../../utils/mediaUrl";
 
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : getLocale(Astro.url);
 const base = import.meta.env.BASE_URL || "/";
@@ -16,47 +19,46 @@ const posts = (result.data?.postConnection?.edges || [])
   .sort((a: any, b: any) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
 ---
 
-<BaseLayout title="Blog — Aprendly" description="Artículos y novedades.">
-  <section class="section pt-[128px]">
-    <div class="container-xl">
-      <h1 class="text-heading-xl">Blog</h1>
+<BaseLayout title="Blog — Aprendly" description="Consejos, guías y novedades para aprender inglés con propósito.">
+  <Breadcrumb items={[{ label: "Inicio", href: prefix }, { label: "Blog" }]} />
 
-      <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post: any) => (
-          <a
-            href={`${prefix}blog/${post._sys.filename}`}
-            class="card group flex flex-col overflow-hidden !p-0"
-          >
-            {post.coverImage && (
-              <img
-                src={mediaUrl(post.coverImage)}
-                alt=""
-                class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-            )}
-            <div class="flex flex-1 flex-col p-6">
-              <div class="flex flex-wrap gap-2">
-                {(post.tags || []).map((tag: string) => (
-                  <span class="rounded-full bg-brand-primary/15 px-3 py-1 text-caption-sm text-accent">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <h2 class="mt-4 text-subtitle-sm">{tField(post, "title", locale)}</h2>
-              <p class="mt-2 flex-1 text-body-sm text-content-muted">
-                {tField(post, "excerpt", locale)}
-              </p>
-              {post.date && (
-                <time class="mt-4 text-caption-sm text-content-subtle" datetime={post.date}>
-                  {new Date(post.date).toLocaleDateString(locale, {
-                    year: "numeric", month: "long", day: "numeric",
-                  })}
-                </time>
-              )}
-            </div>
-          </a>
-        ))}
+  <section class="bg-surface pb-12 pt-14 md:pb-16 md:pt-[72px]">
+    <div class="container-xl flex flex-col justify-between gap-6 lg:flex-row lg:items-end lg:gap-16">
+      <div>
+        <Eyebrow variant="lavender" tilted className="mb-5" data-reveal="up">Blog</Eyebrow>
+        <h1 class="max-w-[640px] text-heading-xl" data-reveal="up" data-delay="80">Ideas para aprender inglés con propósito.</h1>
       </div>
+      <p class="max-w-[420px] text-[17px] leading-[1.65] text-content-muted" data-reveal="up" data-delay="160">
+        Guías prácticas, consejos de nuestros profesores y novedades de Aprendly. ¿Quieres saber tu nivel?
+        <a href={`${prefix}ruta-de-aprendizaje`} class="font-semibold text-accent hover:text-brand-primary-dark">Haz tu diagnóstico gratis.</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-surface-tint pb-20 pt-12 md:pb-[120px] md:pt-14">
+    <div class="container-xl">
+      {posts.length > 0 ? (
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post: any) => (
+            <BlogCard
+              href={`${prefix}blog/${post._sys.filename}`}
+              title={tField(post, "title", locale)}
+              excerpt={tField(post, "excerpt", locale)}
+              coverImage={post.coverImage}
+              date={post.date}
+              readTime={post.readTime}
+              tags={post.tags}
+              featured={post.featured}
+              locale={locale}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="rounded-[28px] bg-surface px-6 py-16 text-center">
+          <p class="mb-6 text-subtitle-lg">Muy pronto publicaremos nuestros primeros artículos.</p>
+          <ArrowLink href={`${prefix}cursos`}>Ver cursos</ArrowLink>
+        </div>
+      )}
     </div>
   </section>
 </BaseLayout>

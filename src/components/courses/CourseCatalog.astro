@@ -1,0 +1,18 @@
+---
+import CourseCatalogReact from "./CourseCatalogReact";
+
+interface TinaResult {
+  query: string;
+  variables: object;
+  data: any;
+}
+
+interface Props {
+  page: TinaResult;
+  courses: TinaResult;
+}
+
+const { page, courses } = Astro.props;
+---
+
+<CourseCatalogReact page={page} courses={courses} client:load />

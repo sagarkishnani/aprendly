@@ -1,0 +1,8 @@
+---
+import EmpresasHeroReact from "./EmpresasHeroReact";
+import type { PageQueryProps } from "../eventos/eventData";
+
+const { query, variables, data } = Astro.props as PageQueryProps;
+---
+
+<EmpresasHeroReact query={query} variables={variables} data={data} client:load />

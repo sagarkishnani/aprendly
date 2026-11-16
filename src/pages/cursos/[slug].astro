@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CourseDetail from "../../components/courses/CourseDetail.astro";
+import CoursesCta from "../../components/courses/CoursesCta.astro";
+import client from "../../../tina/__generated__/client";
+import { slugFromPath } from "../../components/courses/courseUtils";
+
+export async function getStaticPaths() {
+  const courses = await client.queries.courseConnection({ first: 200 });
+  return (courses.data.courseConnection.edges ?? [])
+    .map((edge) => edge?.node?._sys.relativePath)
+    .filter((relativePath): relativePath is string => Boolean(relativePath))
+    .map((relativePath) => ({ params: { slug: slugFromPath(relativePath) }, props: { relativePath } }));
+}
+
+interface Props {
+  relativePath: string;
+}
+
+const { relativePath } = Astro.props;
+const { slug } = Astro.params;
+const page = await client.queries.cursosPage({ relativePath: "index.json" });
+const course = await client.queries.course({ relativePath });
+const courseDoc = course.data.course;
+const pageProps = { query: page.query, variables: page.variables, data: page.data };
+const courseProps = { query: course.query, variables: course.variables, data: course.data };
+const description = courseDoc.excerpt || courseDoc.detail?.aboutText || undefined;
+---
+
+<BaseLayout title={`${courseDoc.title} — Aprendly`} description={description ?? undefined}>
+  <CourseDetail page={pageProps} course={courseProps} slug={slug as string} />
+  <CoursesCta {...pageProps} />
+</BaseLayout>

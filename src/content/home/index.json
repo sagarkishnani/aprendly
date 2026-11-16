@@ -1,30 +1,122 @@
 {
   "hero": {
-    "eyebrow": "Aprendly",
-    "title": "Un título que explica qué haces en una línea",
-    "subtitle": "Academia de inglés online en vivo: cursos grupales, clases 1 a 1 y preparación de exámenes internacionales.",
-    "buttons": [
-      { "text": "Conversemos", "url": "/#cta", "variant": "primary" },
-      { "text": "Ver más", "url": "/#features", "variant": "secondary" }
-    ]
+    "badge": "NUEVO",
+    "badgeText": "Diagnóstico de nivel con IA, gratis",
+    "titleLead": "Aprende inglés con una",
+    "titleHighlight": "ruta hecha para ti.",
+    "subtitle": "Diagnosticamos tu nivel, diseñamos tu camino y te acompañamos con profesores certificados en clases 1 a 1, grupales o para todo tu equipo.",
+    "primaryCta": { "label": "Haz tu diagnóstico gratis", "url": "/ruta-de-aprendizaje" },
+    "secondaryCta": { "label": "Ver cursos", "url": "/cursos" },
+    "image": "/images/clase-online.webp",
+    "imageAlt": "Alumna en una clase online en vivo con su profesora",
+    "liveCard": { "title": "Clase en vivo · 18:00", "subtitle": "Business English con Valeria" },
+    "progressCard": { "title": "Tu ruta: B1 → B2", "percent": 72, "caption": "Módulo 4 de 5 · Negociación" }
   },
-  "features": {
-    "title": "Por qué trabajar con nosotros",
-    "description": "Reemplaza estos textos desde el panel en /admin.",
+  "logos": {
+    "label": "Respaldados por\ninstituciones de prestigio",
     "items": [
-      { "icon": "bolt", "title": "Rápido", "description": "Sitio estático: entrega en milisegundos desde cualquier CDN." },
-      { "icon": "shield", "title": "Seguro", "description": "Sin base de datos ni servidor de aplicaciones que mantener." },
-      { "icon": "chart", "title": "Medible", "description": "Analítica y píxeles se inyectan desde el CMS, sin tocar el código." }
+      { "image": "/images/logos/innova-ulima.webp", "alt": "Innova ULima", "height": 40 },
+      { "image": "/images/logos/ucsur.webp", "alt": "Universidad Científica del Sur", "height": 44 },
+      { "image": "/images/logos/afp-integra.webp", "alt": "AFP Integra", "height": 44 },
+      { "image": "/images/logos/cofide.webp", "alt": "COFIDE", "height": 46 },
+      { "image": "/images/logos/hubudep.webp", "alt": "HUB UDEP", "height": 34 },
+      { "image": "/images/logos/ventures-unheval.webp", "alt": "Ventures Unheval", "height": 64 }
     ]
   },
-  "cta": {
-    "title": "¿Empezamos?",
-    "description": "Cuéntanos qué necesitas y te respondemos el mismo día.",
-    "buttonText": "Escríbenos",
-    "buttonUrl": "/contacto"
+  "route": {
+    "eyebrow": "RUTA DE APRENDIZAJE",
+    "title": "Empieza hoy. Tu ruta se adapta al 100% a tus necesidades.",
+    "description": "Todo empieza con un diagnóstico gratuito: evaluamos cómo hablas, escuchas, lees y escribes, y te ubicamos en el Marco Común Europeo (MCER). Con eso trazamos el camino más corto a tu objetivo.",
+    "steps": [
+      { "title": "Evaluación de 40 minutos", "text": "Test de nivel + conversación con un profesor." },
+      { "title": "Empiezas en 1 semana", "text": "Te asignamos a tu docente y armamos tu ruta según tu meta." },
+      { "title": "Avanzas con seguimiento", "text": "Feedback en cada clase, examen mensual y reporte de progreso por módulo." }
+    ],
+    "levels": [
+      { "code": "A1", "name": "Principiante", "description": "Vocabulario básico, frases simples y expresiones del día a día." },
+      { "code": "A2", "name": "Básico", "description": "Preguntas y respuestas comunes, pronunciación y escucha básica." },
+      { "code": "B1", "name": "Intermedio", "description": "Conversaciones más largas, vocabulario práctico y frases naturales." },
+      { "code": "B2", "name": "Intermedio alto", "description": "Trabajo, viajes y debates con expresiones naturales." },
+      { "code": "C1", "name": "Avanzado", "description": "Fluidez, precisión y vocabulario para contextos exigentes." },
+      { "code": "C2", "name": "Maestría", "description": "Dominio casi nativo del idioma en cualquier contexto." }
+    ],
+    "promptTitle": "¿No sabes en qué nivel estás?",
+    "promptSubtitle": "En 40 minutos lo descubres.",
+    "cta": { "label": "Conocer la ruta", "url": "/ruta-de-aprendizaje" }
+  },
+  "oneToOne": {
+    "eyebrow": "CLASES 1 A 1",
+    "title": "Tu profesor. Tu ritmo. Tu horario.",
+    "image": "/images/clase-1a1.webp",
+    "imageAlt": "Alumna en clase online 1 a 1",
+    "overlayTitle": "Clases online en vivo que se adaptan a tu día a día.",
+    "cta": { "label": "Conoce a los profesores", "url": "#profesores" }
+  },
+  "teachers": {
+    "eyebrow": "NUESTRO EQUIPO",
+    "title": "Conoce a nuestros profesores",
+    "description": "Certificados internacionalmente en enseñanza (CELTA, TESOL, Cambridge) y con amplia experiencia. Tras tu evaluación, te asignamos al docente ideal para tu nivel y objetivo."
+  },
+  "events": {
+    "eyebrow": "EVENTOS Y COMUNIDAD",
+    "title": "Aprender inglés también es vivirlo.",
+    "description": "Paneles, talleres, clubs y alianzas con universidades donde practicas inglés con otras personas que van por lo mismo.",
+    "nextBadge": "PRÓXIMO EVENTO · INSCRIPCIONES ABIERTAS",
+    "nextCtaLabel": "Reservar mi cupo",
+    "datesLabel": "Fechas",
+    "timeLabel": "Horario",
+    "levelsLabel": "Niveles",
+    "priceLabel": "Inversión",
+    "npsLabel": "NPS",
+    "attendeesLabel": "Asistentes",
+    "pastLinkLabel": "Ver evento"
+  },
+  "courses": {
+    "eyebrow": "CURSOS",
+    "title": "Elige un curso según tu meta.",
+    "description": "Programas grupales en vivo con niveles claros, o clases 1 a 1 adaptadas a tu ritmo. Siempre con certificado Aprendly.",
+    "allLink": { "label": "Ver todos los cursos", "url": "/cursos" },
+    "infoTitle": "Información del curso",
+    "levelsLabel": "Niveles",
+    "formatLabel": "Formato",
+    "startLevelLabel": "Nivel recomendado",
+    "durationLabel": "Duración",
+    "ctaLabel": "Ver curso"
+  },
+  "b2b": {
+    "eyebrow": "PARA ORGANIZACIONES",
+    "tabs": [
+      {
+        "label": "Empresas",
+        "title": "Inglés que impulsa a todo tu equipo.",
+        "description": "Programas corporativos con rutas por área y cargo, horarios flexibles y reportes claros para RR. HH.",
+        "points": ["Diagnóstico de nivel para todo el equipo", "Rutas por área, cargo y objetivo", "Reportes de avance mensuales"]
+      },
+      {
+        "label": "Instituciones",
+        "title": "El aliado de inglés de instituciones educativas.",
+        "description": "Co-diseñamos programas con colegios, institutos y universidades, alineados a su malla curricular.",
+        "points": ["Programas alineados a tu malla", "Preparación para certificaciones internacionales", "Seguimiento individual por alumno"]
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "HISTORIAS REALES",
+    "title": "Lo que dicen nuestros alumnos",
+    "rating": "4.9",
+    "ratingLabel": "promedio de satisfacción"
+  },
+  "finalCta": {
+    "eyebrow": "EMPIEZA HOY",
+    "title": "Tu primera clase es gratis. Tu ruta, también.",
+    "description": "Haz tu evaluación, te asignamos a tu docente y empiezas tus clases en una semana.",
+    "primaryCta": { "label": "Solicitar clase gratis", "url": "/ruta-de-aprendizaje" },
+    "secondaryCta": { "label": "Hablar con un asesor", "url": "/contacto" },
+    "image": "/images/rocket-3d.webp",
+    "imageAlt": "Cohete 3D de Aprendly"
   },
   "seo": {
-    "title": "Aprendly",
-    "description": "Academia de inglés online en vivo: cursos grupales, clases 1 a 1 y preparación de exámenes internacionales."
+    "title": "Aprendly · Aprende inglés con una ruta hecha para ti",
+    "description": "Academia de inglés online en vivo: diagnóstico de nivel gratis, cursos grupales, clases 1 a 1 con profesores certificados y programas para empresas."
   }
 }

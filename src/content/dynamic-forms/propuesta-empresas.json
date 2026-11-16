@@ -1,98 +1,92 @@
 {
   "formId": "propuesta-empresas",
-  "formTitle": "Solicita una propuesta",
-  "formTitle_en": "Let's talk?",
-  "description": "Cuéntanos sobre tu organización y te enviamos una propuesta a medida.",
-  "description_en": "Fill in your details and we'll get back to you soon.",
+  "formTitle": "",
+  "description": "Cuéntanos sobre tu organización y te enviamos una propuesta a la medida.",
   "styleVariant": "contact",
-  "submitButtonText": "Enviar",
-  "submitButtonText_en": "Send",
-  "successTitle": "¡Mensaje enviado!",
-  "successTitle_en": "Message sent!",
-  "successMessage": "Gracias por escribirnos. Te contactaremos pronto.",
-  "successMessage_en": "Thanks for reaching out. We'll contact you soon.",
+  "submitButtonText": "Solicitar propuesta",
+  "successTitle": "¡Gracias! Recibimos tu solicitud.",
+  "successMessage": "Un asesor corporativo te contactará en las próximas 24 horas con una propuesta a la medida.",
   "errorMessage": "Ocurrió un error al enviar. Inténtalo de nuevo.",
-  "errorMessage_en": "Something went wrong. Please try again.",
   "validationMessage": "Por favor completa los campos obligatorios.",
-  "validationMessage_en": "Please complete the required fields.",
   "showCorrelativo": false,
+  "privacyText": "Te respondemos en menos de 24 horas.",
   "fields": [
     {
-      "fieldType": "text",
-      "name": "nombre",
-      "label": "Nombre",
-      "label_en": "First name",
-      "placeholder": "Tu nombre",
-      "placeholder_en": "Your first name",
+      "fieldType": "radio",
+      "name": "tipoOrganizacion",
+      "label": "Tipo de organización",
       "required": true,
-      "width": "half",
-      "order": 1
+      "width": "full",
+      "order": 1,
+      "defaultValue": "empresa",
+      "options": [
+        { "value": "empresa", "label": "Empresa" },
+        { "value": "institucion", "label": "Institución educativa" }
+      ]
     },
     {
       "fieldType": "text",
-      "name": "apellido",
-      "label": "Apellido",
-      "label_en": "Last name",
-      "placeholder": "Tu apellido",
-      "placeholder_en": "Your last name",
+      "name": "nombre",
+      "label": "Nombre y apellido",
+      "placeholder": "Nombre y apellido",
       "required": true,
-      "width": "half",
+      "width": "full",
       "order": 2
     },
     {
       "fieldType": "text",
-      "name": "empresa",
-      "label": "Empresa",
-      "label_en": "Company",
-      "placeholder": "Nombre de tu empresa",
-      "placeholder_en": "Your company name",
-      "required": false,
-      "width": "half",
+      "name": "organizacion",
+      "label": "Empresa o institución",
+      "placeholder": "Empresa o institución",
+      "required": true,
+      "width": "full",
       "order": 3
+    },
+    {
+      "fieldType": "email",
+      "name": "correo",
+      "label": "Correo corporativo",
+      "placeholder": "Correo corporativo",
+      "required": true,
+      "width": "full",
+      "order": 4
     },
     {
       "fieldType": "text",
       "name": "telefono",
       "label": "Teléfono",
-      "label_en": "Phone",
-      "placeholder": "999 999 999",
+      "placeholder": "Teléfono",
       "required": false,
       "width": "half",
-      "order": 4,
+      "order": 5,
       "validation": {
-        "pattern": "^[0-9+()\\\\s-]{6,20}$",
-        "patternMessage": "Ingresa un teléfono válido",
-        "patternMessage_en": "Enter a valid phone number"
+        "pattern": "^[0-9+()\\s-]{6,20}$",
+        "patternMessage": "Ingresa un teléfono válido"
       }
     },
     {
-      "fieldType": "email",
-      "name": "correo",
-      "label": "Correo electrónico",
-      "label_en": "Email",
-      "placeholder": "nombre@empresa.com",
+      "fieldType": "select",
+      "name": "tamano",
+      "label": "Tamaño del equipo",
+      "placeholder": "Tamaño del equipo",
       "required": true,
-      "width": "full",
-      "order": 5
+      "width": "half",
+      "order": 6,
+      "options": [
+        { "value": "1-20", "label": "1 – 20" },
+        { "value": "21-100", "label": "21 – 100" },
+        { "value": "101-500", "label": "101 – 500" },
+        { "value": "500+", "label": "500+" }
+      ]
     },
     {
       "fieldType": "textarea",
       "name": "mensaje",
       "label": "Mensaje",
-      "label_en": "Message",
-      "placeholder": "Cuéntanos en qué podemos ayudarte",
-      "placeholder_en": "Tell us how we can help",
-      "required": true,
+      "placeholder": "Cuéntanos tu objetivo (opcional)",
+      "required": false,
       "width": "full",
-      "order": 6
-    },
-    {
-      "fieldType": "checkbox",
-      "name": "aceptaPoliticas",
-      "label": "He leído y acepto la política de privacidad",
-      "label_en": "I have read and accept the privacy policy",
-      "required": true,
-      "width": "full",
+      "rows": 3,
       "order": 7
     }
   ]

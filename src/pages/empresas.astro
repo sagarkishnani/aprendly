@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EmpresasHero from "../components/empresas/EmpresasHero.astro";
+import PartnerLogos from "../components/empresas/PartnerLogos.astro";
+import Formats from "../components/empresas/Formats.astro";
+import EmpresasEvents from "../components/empresas/EmpresasEvents.astro";
+import Proposal from "../components/empresas/Proposal.astro";
+import client from "../../tina/__generated__/client";
+import { loadEvents } from "../components/eventos/loadEvents";
+
+const result = await client.queries.empresasPage({ relativePath: "index.json" });
+const { query, variables, data } = result;
+const seo = (data as any)?.empresasPage?.seo;
+
+const events = await loadEvents();
+const nextEvent = events.find((event) => event.upcoming) ?? null;
+const pastEvents = events.filter((event) => !event.upcoming);
+---
+
+<BaseLayout title={seo?.title} description={seo?.description}>
+  <EmpresasHero query={query} variables={variables} data={data} />
+  <PartnerLogos query={query} variables={variables} data={data} />
+  <Formats query={query} variables={variables} data={data} />
+  <EmpresasEvents query={query} variables={variables} data={data} nextEvent={nextEvent} pastEvents={pastEvents} />
+  <Proposal query={query} variables={variables} data={data} />
+</BaseLayout>

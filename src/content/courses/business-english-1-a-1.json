@@ -5,7 +5,7 @@
   "levelFrom": "A2",
   "levelTo": "C2",
   "tag": "",
-  "excerpt": "",
+  "excerpt": "Clases 1 a 1 de Business English enfocadas en tu industria: reuniones, presentaciones y negociación con un profesor dedicado a tus objetivos.",
   "image": "/images/stock/1573497019940-1c28c88b4f3e.webp",
   "imageAlt": "Business English 1 a 1",
   "price": 480,
@@ -21,5 +21,15 @@
   "isNew": false,
   "live": true,
   "showOnHome": false,
-  "homeOrder": 0
+  "homeOrder": 0,
+  "detail": {
+    "purchase": {
+      "benefits": [
+        "8 clases de 60 min en el horario que elijas",
+        "Plan de estudio según tu puesto y tu industria",
+        "Feedback escrito después de cada clase"
+      ],
+      "heading": "Programa 1 a 1 · 8 clases"
+    }
+  }
 }

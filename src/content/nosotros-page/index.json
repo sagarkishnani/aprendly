@@ -1,1 +1,86 @@
-{ "seo": { "title": "", "description": "" } }
+{
+  "seo": {
+    "title": "Nosotros — Aprendly",
+    "description": "Somos una academia de inglés peruana que combina clases en vivo, tecnología e inteligencia artificial para que cada alumno avance con un plan claro."
+  },
+  "hero": {
+    "eyebrow": "SOBRE NOSOTROS",
+    "title": "Conectamos a cada estudiante a un mundo de aprendizaje.",
+    "text": "Enseñanza de calidad centrada en tus objetivos: rutas personalizadas, profesores certificados y una comunidad que aprende contigo.",
+    "image": "/images/nosotros-hero.webp",
+    "imageAlt": "Estudiante de Aprendly"
+  },
+  "about": {
+    "eyebrow": "QUIÉNES SOMOS",
+    "title": "Enseñanza de calidad centrada en tus objetivos.",
+    "text": "Somos una academia de inglés peruana que combina clases en vivo, tecnología e inteligencia artificial para que cada alumno avance con un plan claro, ya sea por su cuenta, con su equipo de trabajo o desde su institución.",
+    "mission": {
+      "title": "Misión",
+      "text": "Que el inglés sea una herramienta para escalar y ampliar tus oportunidades a nivel personal y profesional."
+    },
+    "vision": {
+      "title": "Visión",
+      "text": "Convertirnos en una academia de inglés reconocida internacionalmente, que brinde a estudiantes y profesionales la oportunidad de desarrollar competencias globales y acceder a más oportunidades."
+    }
+  },
+  "recognition": {
+    "eyebrow": "RECONOCIMIENTOS",
+    "title": "Ganadores de Startup Perú 2026.",
+    "text": "Fuimos seleccionados por el programa del Ministerio de la Producción que impulsa a los emprendimientos innovadores con mayor potencial del país. Un respaldo que confirma nuestra apuesta por un inglés con propósito.",
+    "stats": [
+      { "value": "7+", "label": "Aliados institucionales" },
+      { "value": "500+", "label": "Asistentes a eventos" },
+      { "value": "4.9", "label": "Satisfacción promedio" }
+    ],
+    "image": "/images/events/pasaporte-grupo.webp",
+    "imageAlt": "Comunidad Aprendly",
+    "badgeTitle": "Startup Perú 2026",
+    "badgeText": "Ganadores · PRODUCE"
+  },
+  "partners": {
+    "eyebrow": "ALIADOS",
+    "title": "Instituciones que confían en nosotros",
+    "text": "Incubadoras, universidades y empresas con las que diseñamos programas y llevamos el inglés a más personas.",
+    "logos": [
+      { "name": "Innova ULima", "logo": "/images/logos/innova-ulima.webp", "maxHeight": 56 },
+      { "name": "Universidad Científica del Sur", "logo": "/images/logos/ucsur.webp", "maxHeight": 64 },
+      { "name": "AFP Integra", "logo": "/images/logos/afp-integra.webp", "maxHeight": 64 },
+      { "name": "COFIDE", "logo": "/images/logos/cofide.webp", "maxHeight": 72 },
+      { "name": "HUB UDEP", "logo": "/images/logos/hubudep.webp", "maxHeight": 52 },
+      { "name": "Ventures Unheval", "logo": "/images/logos/ventures-unheval.webp", "maxHeight": 110 }
+    ]
+  },
+  "events": {
+    "eyebrow": "PARTICIPACIÓN EN EVENTOS",
+    "title": "Donde estuvimos este año",
+    "link": { "label": "Ver todos los eventos", "url": "/eventos" }
+  },
+  "team": {
+    "eyebrow": "NUESTRO EQUIPO",
+    "title": "Profesores capacitados",
+    "text": "Nuestros profesores cuentan con certificaciones internacionales y amplia experiencia enseñando a estudiantes y profesionales.",
+    "photos": [
+      { "image": "/images/prof-1.webp", "alt": "Profesora de Aprendly" },
+      { "image": "/images/prof-4.webp", "alt": "Profesora de Aprendly" }
+    ],
+    "certifications": ["FCE", "CAE", "CPE", "TOEFL", "IELTS", "CELTA"]
+  },
+  "steps": {
+    "eyebrow": "EMPIEZA YA",
+    "title": "¿Cómo empezar mis clases?",
+    "items": [
+      { "title": "Contáctanos", "text": "Habla con un asesor y elige el curso que se adapte a tus necesidades." },
+      { "title": "Elige tu horario", "text": "Escoge el horario que mejor encaje con tu rutina." },
+      { "title": "Empieza a aprender", "text": "Ingresa a tu clase y avanza paso a paso hacia tus objetivos." }
+    ]
+  },
+  "cta": {
+    "eyebrow": "EMPIEZA HOY",
+    "title": "Tu primera clase es gratis. Tu ruta, también.",
+    "text": "Haz tu evaluación, te asignamos a tu docente y empiezas tus clases en una semana.",
+    "primary": { "label": "Solicitar clase gratis", "url": "/ruta-de-aprendizaje" },
+    "secondary": { "label": "Hablar con un asesor", "url": "/contacto?interes=asesoria" },
+    "image": "/images/rocket-3d.webp",
+    "imageAlt": ""
+  }
+}

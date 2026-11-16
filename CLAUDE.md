@@ -6,11 +6,16 @@ Guidance for Claude Code (claude.ai/code) when working in this repository.
 
 ```bash
 npm run dev        # TinaCMS + Astro (siempre juntos: /admin necesita el server de Tina)
+npm run build:local # build sin credenciales de TinaCloud (datalayer local)
 npm run build      # tinacms build → astro build
 npm run preview     # previsualiza el build de producción
 ```
 
 No hay test runner configurado.
+
+Tina corre en los puertos **4011** (GraphQL) y **9011** (datalayer), no en los
+4001/9000 por defecto, para poder levantar este proyecto a la vez que otros del
+mismo stack. Están fijados en los scripts de `package.json`.
 
 ## Entorno
 
@@ -103,8 +108,12 @@ Los tipos, las queries y el cliente se generan en `tina/__generated__/`
 
 Colecciones:
 
-- `global` — navegación, footer, SEO por defecto, código inyectado.
+- `global` — navegación (con submenú), footer, botón de WhatsApp, SEO por defecto, código inyectado.
 - `home` — contenido de la portada.
+- `course` — un JSON por curso (`src/content/courses/`); alimenta `/cursos`, `/cursos/<slug>` y la portada.
+- `teacher`, `testimonial` — profesores y testimonios, compartidos entre páginas.
+- `event` — un JSON por evento (`src/content/events/`); alimenta `/eventos`, `/eventos/<slug>` y la portada.
+- `cursosPage`, `rutaPage`, `nosotrosPage`, `empresasPage`, `eventosPage`, `contactoPage` — textos de cada página.
 - `post` — artículos del blog en MDX (`src/content/blog/`).
 - `formConfig` — por formulario: `formType`, `label`, `enabled`, `recipients[]`.
 - `dynamicForms` — definición completa de cada formulario (un JSON por formulario).
@@ -156,31 +165,50 @@ semánticos, y por eso el tema se puede cambiar sin tocar una sola clase.
 
 | Token | Para qué | Valor |
 |---|---|---|
-| `surface` | Fondo de la página | `#FFFFFF` |
-| `surface-raised` | Tarjetas, footer | `#F7F8FA` |
-| `content` | Texto principal | `#16181D` |
-| `content-muted` | Texto secundario | `#4B5563` |
-| `content-subtle` | Metadatos | `#6B7280` |
-| `line` / `line-strong` | Bordes | `#E5E7EB` / `#CBD1D9` |
-| `accent` | Marca legible sobre el fondo | `#6410D4` |
+| `surface` / `surface-raised` / `surface-tint` | Fondos | `#FFFFFF` / `#F7F5FB` / `#FAF8FF` |
+| `content` | Texto principal | `#160B33` |
+| `content-muted` | Texto secundario | `#4A4166` |
+| `content-subtle` | Metadatos | `#6B6385` |
+| `line` / `line-strong` | Bordes | `#E6E0F2` / `#D6CDF0` |
+| `accent` | Marca legible sobre el fondo | `#7416ED` |
+
+Marca: `brand-primary` (`#7416ED`, con `-dark`, `-light`, `-lightest`),
+`brand-pink` (`#F43870`), `brand-ink` (`#160B33`, bloques oscuros y footer),
+`brand-night`, `brand-dusk`, `brand-lilac` (texto sobre `brand-ink`).
 
 Los tonos de texto cumplen 4.5:1 sobre su fondo. Si cambias uno, vuelve a medir.
+Ojo: blanco sobre `brand-pink` da 3.7:1; úsalo solo en textos de 14px semibold
+o mayores (botones, etiquetas), no en párrafos.
 
-**Nunca escribas `text-white/65` ni `bg-white/5`**: asumen fondo oscuro y rompen
-el tema. Las únicas excepciones legítimas son los bloques con fondo oscuro fijo
-(el scrim del hero sobre una foto, el degradado de marca del CTA) y el texto
-sobre `bg-brand-primary`.
+**Nunca escribas `text-white/65` ni `bg-white/5`** fuera de bloques con fondo
+oscuro fijo (`bg-brand-ink`, `bg-brand-primary`, fotos con scrim).
 
-Para "texto en color de marca" usa `text-accent`, **no** `text-brand-primary-light`:
-sobre fondo claro ese tono es ilegible.
+**Tipografía**: Poppins en todo. Escala en utilidades de Tailwind: `display`,
+`heading-xl` → `heading-xs`, `subtitle-*`, `body-*`, `caption-*`, `overline`.
 
-**Rampa de marca**: `brand-primary` (`#7416ED`), `brand-primary-dark`
-(`#6410D4`), `brand-primary-darkest` (`#160B33`).
+**Piezas compartidas** (`src/components/ui/`): `ArrowLink` / `ArrowButton`
+(botón píldora con flecha que gira y texto que rueda al hover) y `Eyebrow`
+(etiqueta). Úsalas en vez de reinventar botones.
 
-**Tipografías**: Poppins (títulos), Poppins (cuerpo),
-Space Mono (acentos técnicos). La escala está como utilidades de Tailwind
-(`heading-xxl` → `caption-sm`).
+**Animaciones**: `src/scripts/motion.ts` corre en todas las páginas y anima por
+atributos `data-*` (`data-reveal`, `data-delay`, `data-speed`, `data-marquee`,
+`data-liquid`, `data-timeline`, `data-stack-card`, `data-float`…). El HTML se
+escribe en su estado final; el script lo anima desde oculto y respeta
+`prefers-reduced-motion`.
 
+### Tienda (WooCommerce, modo `shop`, apagada)
+
+El módulo está instalado pero no hay tienda todavía. Sin `WOO_STORE_URL`,
+`WOO_CONSUMER_KEY` y `WOO_CONSUMER_SECRET` en `.env`:
+
+- el carrito no aparece en el header,
+- `/tienda` muestra un estado vacío con `noindex` y no entra al sitemap,
+- los botones de compra de cursos y eventos llevan a `/contacto` con el interés
+  prellenado.
+
+Para abrirla: completa las claves (también en `woo-config.php` del servidor),
+carga en cada curso o evento su `wooProductId` desde el panel y cambia los CTA
+de compra por `AddToCartReact`.
 
 ### Panel del CMS
 

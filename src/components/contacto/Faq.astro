@@ -1,0 +1,8 @@
+---
+import FaqReact from "./FaqReact";
+import type { PageQueryProps } from "../eventos/eventData";
+
+const { query, variables, data } = Astro.props as PageQueryProps;
+---
+
+<FaqReact query={query} variables={variables} data={data} client:visible />

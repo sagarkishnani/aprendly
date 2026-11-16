@@ -55,7 +55,7 @@ export const dynamicFormsCollection: Collection = {
       type: "string",
       options: [
         { value: "default", label: "Estándar (fondo claro)" },
-        { value: "contact", label: "Contacto (estilo Tailwind, claro)" },
+        { value: "contact", label: "Contacto (campos rellenos, estilo de marca)" },
         { value: "contact-dark", label: "Contacto (oscuro / corp)" },
       ],
       description: "Define la apariencia visual del formulario.",

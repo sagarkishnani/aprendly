@@ -1,0 +1,9 @@
+---
+import NosotrosTeamReact from "./NosotrosTeamReact";
+import type { TinaPageProps } from "../ruta/types";
+
+type Props = TinaPageProps;
+const { query, variables, data } = Astro.props;
+---
+
+<NosotrosTeamReact query={query} variables={variables} data={data} client:visible />

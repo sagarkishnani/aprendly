@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CourseCatalog from "../../components/courses/CourseCatalog.astro";
+import CoursesCta from "../../components/courses/CoursesCta.astro";
+import client from "../../../tina/__generated__/client";
+
+const page = await client.queries.cursosPage({ relativePath: "index.json" });
+const courses = await client.queries.courseConnection({ first: 200 });
+const seo = page.data?.cursosPage?.seo;
+const pageProps = { query: page.query, variables: page.variables, data: page.data };
+const courseProps = { query: courses.query, variables: courses.variables, data: courses.data };
+---
+
+<BaseLayout title={seo?.title || undefined} description={seo?.description || undefined}>
+  <CourseCatalog page={pageProps} courses={courseProps} />
+  <CoursesCta {...pageProps} tinted />
+</BaseLayout>

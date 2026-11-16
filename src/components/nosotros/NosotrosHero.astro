@@ -1,0 +1,9 @@
+---
+import NosotrosHeroReact from "./NosotrosHeroReact";
+import type { TinaPageProps } from "../ruta/types";
+
+type Props = TinaPageProps;
+const { query, variables, data } = Astro.props;
+---
+
+<NosotrosHeroReact query={query} variables={variables} data={data} client:load />

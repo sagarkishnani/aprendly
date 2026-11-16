@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import RutaHero from "../components/ruta/RutaHero.astro";
+import RutaProcess from "../components/ruta/RutaProcess.astro";
+import RutaSimulator from "../components/ruta/RutaSimulator.astro";
+import RutaFaq from "../components/ruta/RutaFaq.astro";
+import RutaCta from "../components/ruta/RutaCta.astro";
+import client from "../../tina/__generated__/client";
+
+const { query, variables, data } = await client.queries.rutaPage({ relativePath: "index.json" });
+const seo = data?.rutaPage?.seo;
+const page = { query, variables, data };
+---
+
+<BaseLayout title={seo?.title || undefined} description={seo?.description || undefined}>
+  <div class="overflow-x-clip">
+    <RutaHero {...page} />
+    <RutaProcess {...page} />
+    <RutaSimulator {...page} />
+    <RutaFaq {...page} />
+    <RutaCta {...page} />
+  </div>
+</BaseLayout>

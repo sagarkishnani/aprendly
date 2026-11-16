@@ -1,0 +1,9 @@
+---
+import RutaProcessReact from "./RutaProcessReact";
+import type { TinaPageProps } from "./types";
+
+type Props = TinaPageProps;
+const { query, variables, data } = Astro.props;
+---
+
+<RutaProcessReact query={query} variables={variables} data={data} client:visible />

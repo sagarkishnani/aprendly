@@ -1,0 +1,14 @@
+---
+import CoursesCtaReact from "./CoursesCtaReact";
+
+interface Props {
+  query: string;
+  variables: object;
+  data: any;
+  tinted?: boolean;
+}
+
+const { query, variables, data, tinted = false } = Astro.props;
+---
+
+<CoursesCtaReact query={query} variables={variables} data={data} tinted={tinted} client:visible />

@@ -1,5 +1,122 @@
-import type { Collection } from "tinacms";
+import type { Collection, TinaField } from "tinacms";
 import { CEFR_LEVELS, COURSE_GOALS, COURSE_TYPES } from "../fields/options";
+
+const FACT_ICONS = [
+  { value: "modules", label: "Módulos" },
+  { value: "clock", label: "Reloj" },
+  { value: "teacher", label: "Profesor" },
+  { value: "certificate", label: "Certificado" },
+  { value: "chat", label: "Conversación" },
+];
+
+const detailField: TinaField = {
+  type: "object",
+  name: "detail",
+  label: "Página de detalle",
+  description: "Todo es opcional: las secciones vacías no se muestran.",
+  fields: [
+    { name: "headline", label: "Título largo (H1)", type: "string", description: "Si está vacío se usa el nombre del curso." },
+    { name: "badge", label: "Etiqueta del programa", type: "string", description: "Ej.: PROGRAMA GRUPAL. Vacío = tipo de curso." },
+    {
+      type: "object",
+      name: "stats",
+      label: "Datos destacados",
+      list: true,
+      ui: { itemProps: (item) => ({ label: item?.text || "Dato" }) },
+      fields: [
+        { name: "text", label: "Texto", type: "string" },
+        { name: "emphasis", label: "En negrita y mayúsculas", type: "boolean" },
+      ],
+    },
+    { name: "statsNote", label: "Nota bajo los datos", type: "string" },
+    {
+      type: "object",
+      name: "teachers",
+      label: "Profesores",
+      list: true,
+      ui: { itemProps: (item) => ({ label: item?.teacher?.split("/").pop() || "Profesor" }) },
+      fields: [{ name: "teacher", label: "Profesor", type: "reference", collections: ["teacher"] }],
+    },
+    {
+      type: "object",
+      name: "video",
+      label: "Video de presentación",
+      fields: [
+        { name: "poster", label: "Imagen de portada", type: "image" },
+        { name: "posterAlt", label: "Texto alternativo de la portada", type: "string" },
+        { name: "url", label: "URL del video (YouTube, Vimeo o .mp4)", type: "string" },
+        { name: "caption", label: "Leyenda", type: "string", description: "Ej.: Conoce el programa · 1:24" },
+      ],
+    },
+    { name: "aboutTitle", label: "Título de la descripción", type: "string" },
+    { name: "aboutText", label: "Descripción", type: "string", ui: { component: "textarea" } },
+    {
+      type: "object",
+      name: "facts",
+      label: "Datos con ícono",
+      list: true,
+      ui: { itemProps: (item) => ({ label: item?.text || "Dato" }) },
+      fields: [
+        { name: "icon", label: "Ícono", type: "string", options: FACT_ICONS },
+        { name: "text", label: "Texto", type: "string" },
+      ],
+    },
+    {
+      type: "object",
+      name: "modules",
+      label: "Módulos o niveles",
+      list: true,
+      ui: { itemProps: (item) => ({ label: item?.title || "Módulo" }) },
+      fields: [
+        { name: "badge", label: "Etiqueta", type: "string", description: "Ej.: NIVEL 1 · A2" },
+        { name: "title", label: "Título", type: "string" },
+        { name: "image", label: "Imagen", type: "image" },
+        { name: "imageAlt", label: "Texto alternativo de la imagen", type: "string" },
+        { name: "description", label: "Descripción", type: "string", ui: { component: "textarea" } },
+        { name: "meta", label: "Resumen", type: "string", description: "Ej.: 12 CLASES DE 60 MIN" },
+        {
+          type: "object",
+          name: "lessons",
+          label: "Clases",
+          list: true,
+          ui: { itemProps: (item) => ({ label: item?.title || "Clase" }) },
+          fields: [
+            { name: "title", label: "Tema", type: "string" },
+            { name: "duration", label: "Duración", type: "string" },
+          ],
+        },
+      ],
+    },
+    {
+      type: "object",
+      name: "certificate",
+      label: "Certificado",
+      fields: [
+        { name: "title", label: "Título", type: "string" },
+        { name: "text", label: "Texto", type: "string", ui: { component: "textarea" } },
+        { name: "level", label: "Nivel destacado", type: "string", description: "Ej.: B2" },
+      ],
+    },
+    {
+      type: "object",
+      name: "purchase",
+      label: "Tarjeta de inscripción",
+      fields: [
+        { name: "heading", label: "Título sobre la tarjeta", type: "string", description: "Ej.: Programa grupal · 4 niveles" },
+        { name: "originalPrice", label: "Precio antes del descuento (S/)", type: "number" },
+        { name: "ctaLabel", label: "Texto del botón (opcional)", type: "string", description: "Vacío = texto general de la página de cursos." },
+        { name: "note", label: "Nota bajo el precio", type: "string", description: "Ej.: + clase de prueba gratis" },
+        { name: "levels", label: "Niveles de inicio disponibles", type: "string", list: true, options: CEFR_LEVELS },
+        { name: "defaultLevel", label: "Nivel seleccionado por defecto", type: "string", options: CEFR_LEVELS },
+        { name: "schedules", label: "Horarios", type: "string", list: true },
+        { name: "offerEndsAt", label: "La oferta termina", type: "datetime", ui: { timeFormat: "HH:mm" } },
+        { name: "benefits", label: "Beneficios", type: "string", list: true },
+        { name: "routeLabel", label: "Ruta completa: título", type: "string", description: "Ej.: Ruta completa · 4 niveles" },
+        { name: "routePrice", label: "Ruta completa: precio (S/)", type: "number" },
+      ],
+    },
+  ],
+};
 
 export const courseCollection: Collection = {
   name: "course",
@@ -39,5 +156,6 @@ export const courseCollection: Collection = {
       type: "number",
       description: "Cuando la tienda esté activa, el botón de compra usará este producto.",
     },
+    detailField,
   ],
 };

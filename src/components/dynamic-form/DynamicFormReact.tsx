@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useId } from "react";
+import { ArrowButton } from "../ui/ArrowLink";
 import { useTina, tinaField } from "tinacms/dist/react";
 import {
   FormPageHeader,
@@ -62,6 +63,7 @@ const FORM_UI = {
     successTitle: "¡Formulario enviado!",
     successSubtitle: "Tu solicitud ha sido registrada correctamente.",
     contactSuccess: "¡Gracias! Tu mensaje ha sido enviado.",
+    sendAnother: "Enviar otro mensaje",
     genericError: "Ocurrió un error al enviar.",
     connError: "No se pudo conectar con el servidor.",
     captchaMissing: "Verificación de seguridad no disponible. Contacta al administrador.",
@@ -77,6 +79,7 @@ const FORM_UI = {
     successTitle: "Form submitted!",
     successSubtitle: "Your request has been registered successfully.",
     contactSuccess: "Thank you! Your message has been sent.",
+    sendAnother: "Send another message",
     genericError: "An error occurred while sending.",
     connError: "Could not connect to the server.",
     captchaMissing: "Security verification unavailable. Please contact the administrator.",
@@ -189,20 +192,18 @@ function getDefaultValue(field: FormField): any {
   }
 }
 
-const contactLabelCls =
-  "block text-caption-sm font-semibold text-greyscale-darkest tracking-wider uppercase mb-2";
+const contactLabelCls = "mb-3 block text-[15px] font-semibold text-content";
 const contactInputCls =
-  "w-full border rounded-xl px-4 py-3.5 text-body-sm text-greyscale-darkest placeholder:text-greyscale-medium focus:outline-none focus:ring-1 transition-all bg-greyscale-white";
-const contactInputOk = "border-greyscale-light focus:border-brand-primary focus:ring-brand-primary/20";
-const contactInputErr = "border-red-400 focus:border-red-400 focus:ring-red-400/20";
-const contactErrorCls = "text-caption-sm text-red-500 mt-1";
+  "w-full min-w-0 rounded-lg border-[1.5px] bg-surface-raised px-[18px] py-4 text-[15px] text-content placeholder:text-content-subtle outline-none transition-colors focus:border-brand-primary focus:bg-surface";
+const contactInputOk = "border-transparent";
+const contactInputErr = "border-semantics-error";
+const contactErrorCls = "text-caption-sm text-semantics-error-dark mt-1";
 
-const contactLabelDarkCls =
-  "block text-caption-sm font-medium text-greyscale-light mb-2";
+const contactLabelDarkCls = "mb-2 block text-caption-md font-medium text-brand-lilac";
 const contactInputDarkCls =
-  "w-full border rounded-xl px-4 py-3.5 text-body-sm text-greyscale-white placeholder:text-greyscale-medium focus:outline-none focus:ring-1 transition-all bg-surface-raised";
-const contactInputDarkOk = "border-line focus:border-brand-primary focus:ring-brand-primary/30";
-const contactInputDarkErr = "border-red-400/70 focus:border-red-400 focus:ring-red-400/20";
+  "w-full min-w-0 rounded-xl border px-4 py-3.5 text-body-sm text-white placeholder:text-brand-lilac outline-none transition-colors bg-brand-night focus:border-brand-primary";
+const contactInputDarkOk = "border-brand-dusk";
+const contactInputDarkErr = "border-semantics-error";
 
 function contactCls(dark?: boolean) {
   return {
@@ -213,6 +214,56 @@ function contactCls(dark?: boolean) {
   };
 }
 
+function ContactLabel({ htmlFor, label, required, hasPlaceholder, dark }: {
+  htmlFor: string; label: string; required?: boolean; hasPlaceholder: boolean; dark?: boolean;
+}) {
+  if (!label) return null;
+  return (
+    <label htmlFor={htmlFor} className={hasPlaceholder ? "sr-only" : contactCls(dark).label}>
+      {label} {required && <span className="text-accent" aria-hidden>*</span>}
+    </label>
+  );
+}
+
+function ContactPillRadio({
+  label, options, value, onChange, required, error,
+}: {
+  label: string; options: FieldOption[]; value: string; onChange: (v: string) => void;
+  required?: boolean; error?: string;
+}) {
+  const groupName = useId();
+  return (
+    <fieldset>
+      {label && <legend className={contactLabelCls}>{label}</legend>}
+      <div className="flex flex-wrap gap-2">
+        {options.map((opt) => {
+          const checked = value === opt.value;
+          return (
+            <label
+              key={opt.value}
+              className={`inline-flex h-[42px] cursor-pointer items-center rounded-full border-[1.5px] px-[18px] text-body-sm font-semibold transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand-primary has-[:focus-visible]:ring-offset-2 ${
+                checked ? "border-brand-primary bg-brand-primary text-white" : "border-line bg-surface text-content hover:border-brand-primary"
+              }`}
+            >
+              <input
+                type="radio"
+                name={groupName}
+                value={opt.value}
+                checked={checked}
+                required={required}
+                onChange={() => onChange(opt.value)}
+                className="sr-only"
+              />
+              {opt.label}
+            </label>
+          );
+        })}
+      </div>
+      {error && <p className={contactErrorCls}>{error}</p>}
+    </fieldset>
+  );
+}
+
 function ContactInput({
   label, placeholder, type = "text", value, onChange, required, maxLength, error, dark, inputMode,
 }: {
@@ -221,14 +272,13 @@ function ContactInput({
   inputMode?: "numeric" | "text";
 }) {
   const c = contactCls(dark);
+  const id = useId();
   return (
     <div>
-      {label && (
-        <label className={c.label}>
-          {label} {required && <span className="text-brand-primary">*</span>}
-        </label>
-      )}
+      <ContactLabel htmlFor={id} label={label} required={required} hasPlaceholder={!!placeholder} dark={dark} />
       <input
+        id={id}
+        aria-invalid={!!error || undefined}
         type={type}
         inputMode={inputMode}
         placeholder={placeholder}
@@ -246,7 +296,7 @@ function renderSelectOptions(options: FieldOption[]) {
   const hasGroups = options.some((o) => o.group);
   if (!hasGroups) {
     return options.map((opt, i) => (
-      <option key={i} value={opt.value} className="text-greyscale-darkest">
+      <option key={i} value={opt.value} className="text-content">
         {opt.label}
       </option>
     ));
@@ -264,12 +314,12 @@ function renderSelectOptions(options: FieldOption[]) {
   return order.map((key, gi) => {
     const groupOpts = buckets.get(key)!;
     const children = groupOpts.map((opt, i) => (
-      <option key={i} value={opt.value} className="text-greyscale-darkest">
+      <option key={i} value={opt.value} className="text-content">
         {opt.label}
       </option>
     ));
     return key ? (
-      <optgroup key={gi} label={key} className="text-greyscale-darkest">
+      <optgroup key={gi} label={key} className="text-content">
         {children}
       </optgroup>
     ) : (
@@ -285,23 +335,22 @@ function ContactSelect({
   onChange: (v: string) => void; required?: boolean; error?: string; dark?: boolean;
 }) {
   const c = contactCls(dark);
-  const arrowColor = dark ? "%23B0B0B0" : "%236B7280";
+  const id = useId();
+  const arrowColor = dark ? "%23C9C2E0" : "%23160B33";
   return (
     <div>
-      {label && (
-        <label className={c.label}>
-          {label} {required && <span className="text-brand-primary">*</span>}
-        </label>
-      )}
+      <ContactLabel htmlFor={id} label={label} required={required} hasPlaceholder={!!placeholder} dark={dark} />
       <select
+        id={id}
+        aria-invalid={!!error || undefined}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={`${c.input} appearance-none ${dark && !value ? "text-greyscale-medium" : ""} ${error ? c.err : c.ok}`}
+        className={`${c.input} cursor-pointer appearance-none pr-12 ${!value ? (dark ? "text-brand-lilac" : "text-content-subtle") : ""} ${error ? c.err : c.ok}`}
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='${arrowColor}' d='M2.5 4.5L6 8l3.5-3.5'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='${arrowColor}' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`,
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "right 16px center",
-          backgroundSize: "12px",
+          backgroundPosition: "right 20px center",
+          backgroundSize: "16px",
         }}
       >
         <option value="" disabled>
@@ -321,14 +370,13 @@ function ContactTextarea({
   rows?: number; required?: boolean; maxLength?: number; error?: string; dark?: boolean;
 }) {
   const c = contactCls(dark);
+  const id = useId();
   return (
     <div>
-      {label && (
-        <label className={c.label}>
-          {label} {required && <span className="text-brand-primary">*</span>}
-        </label>
-      )}
+      <ContactLabel htmlFor={id} label={label} required={required} hasPlaceholder={!!placeholder} dark={dark} />
       <textarea
+        id={id}
+        aria-invalid={!!error || undefined}
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(maxLength ? e.target.value.slice(0, maxLength) : e.target.value)}
@@ -336,10 +384,10 @@ function ContactTextarea({
         maxLength={maxLength}
         className={`${c.input} resize-none ${error ? c.err : c.ok}`}
       />
-      <div className="flex justify-between mt-1">
+      <div className="flex justify-between">
         {error ? <p className={contactErrorCls}>{error}</p> : <span />}
         {maxLength && (
-          <span className="text-caption-sm text-greyscale-medium">
+          <span className="mt-1 text-caption-sm text-content-subtle">
             {value.length}/{maxLength}
           </span>
         )}
@@ -360,35 +408,24 @@ function ContactCheckbox({
           type="checkbox"
           checked={checked}
           onChange={(e) => onChange(e.target.checked)}
-          className={`mt-1 w-4 h-4 shrink-0 basis-4 accent-brand-primary rounded ${dark ? "border-line" : "border-greyscale-light"}`}
+          className="mt-1 h-4 w-4 shrink-0 basis-4 rounded border-line accent-brand-primary"
         />
-        <span className={`text-caption-sm leading-relaxed ${dark ? "text-greyscale-light" : "text-greyscale-dark"}`}>{children}</span>
+        <span className={`text-caption-md leading-relaxed ${dark ? "text-brand-lilac" : "text-content-muted"}`}>{children}</span>
       </label>
-      {error && <p className="text-caption-sm text-red-500 mt-1 ml-7">{error}</p>}
+      {error && <p className={`${contactErrorCls} ml-7`}>{error}</p>}
     </div>
   );
 }
 
 function ContactSubmitButton({
-  text, onClick, disabled, dark,
+  text, onClick, disabled,
 }: {
   text: string; onClick: () => void; disabled?: boolean; dark?: boolean;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      className={`w-full h-12 flex items-center justify-center rounded-[8px] text-greyscale-white text-body-md font-semibold transition-all ${
-        disabled
-          ? "bg-brand-primary/60 cursor-not-allowed"
-          : dark
-          ? "bg-gradient-to-r from-brand-primary to-brand-primary-dark hover:from-brand-primary-dark hover:to-brand-primary-darkest active:scale-[0.99]"
-          : "bg-brand-primary hover:bg-brand-primary-dark active:scale-[0.99]"
-      }`}
-    >
+    <ArrowButton onClick={onClick} disabled={disabled} size="lg" className="w-full justify-between">
       {text}
-    </button>
+    </ArrowButton>
   );
 }
 
@@ -416,7 +453,7 @@ function CheckboxLabel({
     variant === "contact"
       ? "text-brand-primary underline hover:text-brand-primary-dark"
       : variant === "contact-dark"
-      ? "text-[#D070B8] underline hover:text-[#E693CE]"
+      ? "text-brand-primary-light underline hover:text-white"
       : undefined;
 
   return (
@@ -442,10 +479,19 @@ interface DynamicFormProps {
   data: any;
   hideHeader?: boolean;
   prefill?: Record<string, string>;
+  paramAliases?: Record<string, string[]>;
   locale?: Locale;
 }
 
-export default function DynamicFormReact({ query, variables, data: initialData, hideHeader = false, prefill, locale = "es" }: DynamicFormProps) {
+function readAliasedParam(params: URLSearchParams, aliases: string[]): string {
+  for (const alias of aliases) {
+    const value = params.get(alias);
+    if (value) return `${alias}: ${value}`;
+  }
+  return "";
+}
+
+export default function DynamicFormReact({ query, variables, data: initialData, hideHeader = false, prefill, paramAliases, locale = "es" }: DynamicFormProps) {
   const { data } = useTina({ query, variables, data: initialData });
   const formConfig: FormConfig = data?.dynamicForms || initialData?.dynamicForms;
   // Never return null from an island: Astro logs a bogus "Invalid hook call".
@@ -466,7 +512,7 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
   const isDark = variant === "contact-dark";
   const isContact = variant === "contact" || isDark;
 
-  const [values, setValues] = useState<Record<string, any>>(() => {
+  const buildInitialValues = () => {
     const init: Record<string, any> = {};
     for (const f of fields) {
       if (f.name && !isStructural(f.fieldType)) {
@@ -478,7 +524,9 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
       }
     }
     return init;
-  });
+  };
+
+  const [values, setValues] = useState<Record<string, any>>(buildInitialValues);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [touched, setTouched] = useState(false);
@@ -546,6 +594,11 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
           const paramVal = params.get(f.name);
           if (paramVal) setValues((prev) => ({ ...prev, [f.name!]: paramVal }));
         }
+      }
+      for (const [fieldName, aliases] of Object.entries(paramAliases || {})) {
+        if (params.has(fieldName)) continue;
+        const aliasedValue = readAliasedParam(params, aliases);
+        if (aliasedValue) setValues((prev) => ({ ...prev, [fieldName]: aliasedValue }));
       }
     } catch {}
   }, []);
@@ -711,20 +764,35 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
     }
   };
 
+  const startOver = () => {
+    setValues(buildInitialValues());
+    setErrors({});
+    setTouched(false);
+    setSubmitted(false);
+  };
+
   if (submitted) {
     if (isContact) {
       return (
-        <div className="flex items-center justify-center h-full min-h-[400px]">
-          <div className="text-center">
-            <div className="w-16 h-16 rounded-full bg-semantics-success/10 flex items-center justify-center mx-auto mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M5 13l4 4L19 7" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <p className={`text-subtitle-sm font-semibold ${isDark ? "text-greyscale-white" : "text-greyscale-darkest"}`}>
-              {L(formConfig, "successMessage") || ui.contactSuccess}
-            </p>
-          </div>
+        <div role="status" className="flex flex-col items-center gap-2.5 px-2 py-12 text-center">
+          <span className="mb-2 flex h-[72px] w-[72px] items-center justify-center rounded-full bg-brand-primary text-white">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M5 12l5 5L20 7" />
+            </svg>
+          </span>
+          <p className={`text-[26px] font-bold leading-tight ${isDark ? "text-white" : "text-content"}`} data-tina-field={tinaField(formConfig, "successTitle")}>
+            {L(formConfig, "successTitle") || ui.successTitle}
+          </p>
+          <p className={`max-w-[360px] text-[15px] leading-relaxed ${isDark ? "text-brand-lilac" : "text-content-muted"}`} data-tina-field={tinaField(formConfig, "successMessage")}>
+            {L(formConfig, "successMessage") || ui.contactSuccess}
+          </p>
+          <button
+            type="button"
+            onClick={startOver}
+            className="mt-3 h-[46px] rounded-full border-[1.5px] border-brand-ink bg-surface px-5 text-body-sm font-semibold text-content transition-colors hover:bg-brand-ink hover:text-white"
+          >
+            {ui.sendAnother}
+          </button>
         </div>
       );
     }
@@ -753,7 +821,7 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
       return (
         <div data-tina-field={tinaField(field, "label")}>
           {isContact ? (
-            <h3 className={`text-body-md font-medium mt-4 mb-2 ${isDark ? "text-greyscale-white" : "text-greyscale-darkest"}`}>
+            <h3 className={`text-body-md font-medium mt-4 mb-2 ${isDark ? "text-white" : "text-content"}`}>
               {L(field, "label")}
             </h3>
           ) : (
@@ -765,7 +833,7 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
 
     if (field.fieldType === "divider") {
       return isContact ? (
-        <div className={`border-t ${isDark ? "border-line" : "border-greyscale-light"}`} />
+        <div className={`border-t ${isDark ? "border-brand-dusk" : "border-line"}`} />
       ) : (
         <FormDivider />
       );
@@ -775,7 +843,7 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
       return (
         <div data-tina-field={tinaField(field, "noteContent")}>
           {isContact ? (
-            <p className="text-caption-sm text-greyscale-medium leading-relaxed">
+            <p className="text-caption-md text-content-subtle leading-relaxed">
               {L(field, "noteContent")}
             </p>
           ) : (
@@ -860,6 +928,19 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
             maxLength={maxLen}
             error={err}
             dark={isDark}
+          />
+        );
+      }
+
+      if (field.fieldType === "radio" && !isDark) {
+        return (
+          <ContactPillRadio
+            label={label}
+            options={fieldOptions}
+            value={val || ""}
+            onChange={(v) => updateField(name, v)}
+            required={required}
+            error={err}
           />
         );
       }
@@ -1076,7 +1157,7 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
         <div className="mb-8">
           {L(formConfig, "formTitle") && (
             <h2
-              className={`text-subtitle-md font-medium! ${isDark ? "text-greyscale-white mb-2" : "text-greyscale-darkest"}`}
+              className={`text-subtitle-md ${isDark ? "text-white mb-2" : "text-content"}`}
               data-tina-field={tinaField(formConfig, "formTitle")}
             >
               {L(formConfig, "formTitle")}
@@ -1084,7 +1165,7 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
           )}
           {isDark && L(formConfig, "description") && (
             <p
-              className="text-body-sm text-greyscale-light"
+              className="text-body-sm text-brand-lilac"
               data-tina-field={tinaField(formConfig, "description")}
             >
               {L(formConfig, "description")}
@@ -1095,7 +1176,7 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
 
       <div className={`df-grid-${formId}`}>
         {sortedFields.map((field, idx) => {
-          if (!isFieldVisible(field)) return null;
+          if (!isFieldVisible(field) || field.fieldType === "hidden") return null;
 
           const w = isStructural(field.fieldType) ? "full" : (field.width || "full");
           const orderVal = isMobile
@@ -1123,7 +1204,7 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
                       ? undefined
                       : { fontSize: "12px", color: "#9CA3AF", marginTop: "4px", fontFamily: "Poppins, sans-serif" }
                   }
-                  className={isContact ? "text-caption-sm text-greyscale-medium mt-1" : undefined}
+                  className={isContact ? "text-caption-sm text-content-subtle mt-1" : undefined}
                 >
                   {L(field, "helpText")}
                 </p>
@@ -1140,7 +1221,7 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
       {/* interaction-only: 0px until Turnstile challenges a bot; display:none would stop it rendering. */}
       <div ref={captchaRef} style={{ marginTop: "16px" }} />
 
-      <div style={{ marginTop: "24px" }}>
+      <div style={{ marginTop: isContact ? "18px" : "24px" }}>
         {isContact ? (
           <ContactSubmitButton
             text={sending ? ui.sending : (L(formConfig, "submitButtonText") || ui.submit)}
@@ -1164,9 +1245,19 @@ export default function DynamicFormReact({ query, variables, data: initialData, 
               ? undefined
               : { textAlign: "center", color: "#EF4444", fontSize: "13px", marginTop: "8px", fontFamily: "Poppins, sans-serif" }
           }
-          className={isContact ? "text-caption-sm text-red-500 text-center mt-2" : undefined}
+          className={isContact ? "text-caption-md text-semantics-error-dark text-center mt-2" : undefined}
+          role="alert"
         >
           {sendError}
+        </p>
+      )}
+
+      {isContact && formConfig.privacyText && (
+        <p
+          className={`mt-3 text-center text-caption-sm ${isDark ? "text-brand-lilac" : "text-content-subtle"}`}
+          data-tina-field={tinaField(formConfig, "privacyText")}
+        >
+          {formConfig.privacyText}
         </p>
       )}
     </div>

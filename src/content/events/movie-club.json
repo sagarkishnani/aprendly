@@ -1,14 +1,18 @@
 {
   "title": "Movie Club: The Substance",
   "kicker": "Próximo evento",
+  "category": "Conversation club",
   "upcoming": true,
   "startDate": "2026-11-07T05:00:00.000Z",
   "dateLabel": "Sáb 7 – 28 nov 2026",
   "mode": "Online en vivo",
   "place": "Zoom",
   "image": "/images/stock/1489599849927-2ee91cede3ba.webp",
+  "imageAlt": "Sala de cine con butacas rojas",
   "gallery": [],
   "excerpt": "Una película, cuatro sábados y mucha conversación. Usamos el cine como punto de partida para opinar, debatir y hablar en inglés el 100% del tiempo.",
+  "teaser": "4 sábados de cine y conversación en inglés. Inicia el 7 de noviembre.",
+  "introTitle": "¿Qué es el Movie Club?",
   "time": "10:30 a.m. – 12:00 p.m.",
   "levels": "A2, B1 y B2",
   "price": 95,
@@ -57,5 +61,8 @@
     "Workbook con actividades para antes, durante y después de ver la película",
     "Vocabulario y frases útiles en cada sesión",
     "Preguntas y retos según tu nivel: Starter (A2), Builder (B1) y Challenge (B2)"
-  ]
+  ],
+  "startLabel": "Sábado 7 de noviembre",
+  "formatLabel": "4 sesiones de 90 min",
+  "sessionsTitle": "Tu ruta por la película"
 }

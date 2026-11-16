@@ -1,0 +1,18 @@
+---
+import OrganizationsReact from "./OrganizationsReact";
+import DynamicForm from "../dynamic-form/DynamicForm.astro";
+import type { HomeQueryProps } from "./types";
+
+const { query, variables, data } = Astro.props as HomeQueryProps;
+---
+
+<section id="organizaciones" class="pb-24 md:pb-[140px]">
+  <div class="container-xl">
+    <div class="grid items-start gap-12 border-t border-line pt-16 md:pt-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-24">
+      <OrganizationsReact query={query} variables={variables} data={data} client:visible />
+      <div data-reveal="up" data-delay="120">
+        <DynamicForm formSlug="propuesta-empresas" />
+      </div>
+    </div>
+  </div>
+</section>

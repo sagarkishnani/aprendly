@@ -1,0 +1,8 @@
+---
+import OneToOneReact from "./OneToOneReact";
+import type { HomeQueryProps } from "./types";
+
+const { query, variables, data } = Astro.props as HomeQueryProps;
+---
+
+<OneToOneReact query={query} variables={variables} data={data} client:visible />

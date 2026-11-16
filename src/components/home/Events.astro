@@ -1,0 +1,10 @@
+---
+import EventsReact from "./EventsReact";
+import type { HomeEvent, HomeQueryProps } from "./types";
+
+type Props = HomeQueryProps & { nextEvent: HomeEvent | null; pastEvents: HomeEvent[] };
+
+const { query, variables, data, nextEvent, pastEvents } = Astro.props as Props;
+---
+
+<EventsReact query={query} variables={variables} data={data} nextEvent={nextEvent} pastEvents={pastEvents} client:visible />

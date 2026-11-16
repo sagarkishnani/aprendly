@@ -1,6 +1,10 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostBody from "../../components/blog/PostBody";
+import Breadcrumb from "../../components/blog/Breadcrumb.astro";
+import { formatPostDate } from "../../components/blog/formatPostDate";
+import Eyebrow from "../../components/ui/Eyebrow";
+import ArrowLink from "../../components/ui/ArrowLink";
 import client from "../../../tina/__generated__/client";
 import { getLocale, tField, richField } from "../../utils/i18n";
 import { isLocale } from "../../i18n/config";
@@ -22,29 +26,66 @@ const prefix = locale === "es" ? base : `${base}${locale}/`;
 const result = await client.queries.post({ relativePath: `${slug}.mdx` });
 const post = result.data?.post;
 const body = richField(post, "body", locale);
+const title = tField(post, "title", locale);
+const excerpt = tField(post, "excerpt", locale);
+const tags = (post?.tags || []).filter(Boolean);
+const meta = [formatPostDate(post?.date, locale), post?.readTime].filter(Boolean).join(" · ");
 ---
 
-<BaseLayout
-  title={`${tField(post, "title", locale)} — Aprendly`}
-  description={tField(post, "excerpt", locale)}
->
-  <article class="section pt-[128px]">
-    <div class="container-lg">
-      <a href={`${prefix}blog`} class="text-body-sm text-content-subtle hover:text-content">← Blog</a>
-      <h1 class="mt-6 text-heading-lg">{tField(post, "title", locale)}</h1>
-      {post?.date && (
-        <time class="mt-4 block text-body-sm text-content-subtle" datetime={post.date}>
-          {new Date(post.date).toLocaleDateString(locale, {
-            year: "numeric", month: "long", day: "numeric",
-          })}
-        </time>
+<BaseLayout title={`${title} — Aprendly`} description={excerpt}>
+  <Breadcrumb items={[{ label: "Inicio", href: prefix }, { label: "Blog", href: `${prefix}blog` }, { label: title }]} />
+
+  <article class="pb-20 md:pb-[120px]">
+    <header class="mx-auto w-full max-w-[880px] px-4 pb-10 pt-14 text-center sm:px-6 md:pt-[72px] lg:px-8">
+      {tags.length > 0 && (
+        <Eyebrow variant="lavender" tilted className="mb-5" data-reveal="up">{tags.join(" · ")}</Eyebrow>
       )}
-      {post?.coverImage && (
-        <img src={mediaUrl(post.coverImage)} alt="" class="mt-8 w-full rounded-xl object-cover" />
+      <h1 class="text-heading-lg" data-reveal="up" data-delay="80">{title}</h1>
+      {excerpt && (
+        <p class="mx-auto mt-5 max-w-[640px] text-body-lg text-content-muted" data-reveal="up" data-delay="140">{excerpt}</p>
       )}
-      <div class="prose mt-10 max-w-none prose-headings:font-heading prose-a:text-brand-primary-light">
-        <PostBody content={body} client:visible />
+      {meta && (
+        <p class="mt-6 text-body-sm text-content-subtle" data-reveal="up" data-delay="200">
+          {post?.date ? <time datetime={post.date}>{meta}</time> : meta}
+        </p>
+      )}
+    </header>
+
+    {post?.coverImage && (
+      <div class="container-xl">
+        <div class="mx-auto aspect-[16/9] max-w-[1120px] overflow-hidden rounded-[28px] bg-brand-primary-lightest md:rounded-4xl" data-reveal="scale">
+          <div class="h-full w-full" data-zoomin>
+            <img src={mediaUrl(post.coverImage)} alt="" class="block h-full w-full object-cover" />
+          </div>
+        </div>
       </div>
+    )}
+
+    <div
+      class="prose prose-lg mx-auto mt-12 max-w-[720px] px-4 sm:px-6 md:mt-16 lg:px-0
+        prose-headings:font-heading prose-headings:font-bold prose-headings:tracking-[-0.02em] prose-headings:text-content
+        prose-h2:mt-12 prose-h2:text-heading-sm
+        prose-p:text-content-muted prose-li:text-content-muted prose-strong:text-content
+        prose-a:font-semibold prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+        prose-blockquote:rounded-r-2xl prose-blockquote:border-l-brand-pink prose-blockquote:bg-brand-primary-lightest prose-blockquote:py-1 prose-blockquote:not-italic prose-blockquote:text-content
+        prose-th:text-content prose-td:text-content-muted prose-hr:border-line
+        marker:text-accent"
+    >
+      <PostBody content={body} client:visible />
+    </div>
+
+    <div class="mt-16 px-4 sm:px-6">
+      <div class="mx-auto flex max-w-[720px] flex-col items-start gap-5 rounded-[28px] bg-brand-primary-lightest p-7 sm:flex-row sm:items-center sm:justify-between md:p-8">
+        <div>
+          <p class="text-subtitle-md">¿Listo para tu siguiente nivel?</p>
+          <p class="mt-1 text-body-sm text-content-muted">Haz tu diagnóstico gratis y recibe una ruta a tu medida.</p>
+        </div>
+        <ArrowLink href={`${prefix}ruta-de-aprendizaje`} className="shrink-0">Empezar diagnóstico</ArrowLink>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href={`${prefix}blog`} class="text-body-sm font-semibold text-accent hover:text-brand-primary-dark">← Volver al blog</a>
     </div>
   </article>
 </BaseLayout>

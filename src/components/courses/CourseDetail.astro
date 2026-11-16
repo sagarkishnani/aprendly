@@ -1,0 +1,19 @@
+---
+import CourseDetailReact from "./CourseDetailReact";
+
+interface TinaResult {
+  query: string;
+  variables: object;
+  data: any;
+}
+
+interface Props {
+  page: TinaResult;
+  course: TinaResult;
+  slug: string;
+}
+
+const { page, course, slug } = Astro.props;
+---
+
+<CourseDetailReact page={page} course={course} slug={slug} client:load />

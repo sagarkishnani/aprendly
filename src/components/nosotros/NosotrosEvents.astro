@@ -1,0 +1,25 @@
+---
+import NosotrosEventsReact, { type GalleryEvent } from "./NosotrosEventsReact";
+import client from "../../../tina/__generated__/client";
+import type { TinaPageProps } from "../ruta/types";
+
+type Props = TinaPageProps;
+const { query, variables, data } = Astro.props;
+
+const GALLERY_SIZE = 6;
+const eventsResult = await client.queries.eventConnection({ first: 100 });
+const events: GalleryEvent[] = (eventsResult.data?.eventConnection?.edges || [])
+  .map((edge) => edge?.node)
+  .filter((node): node is NonNullable<typeof node> => Boolean(node) && !node?.upcoming)
+  .sort((a, b) => new Date(b.startDate || 0).getTime() - new Date(a.startDate || 0).getTime())
+  .slice(0, GALLERY_SIZE)
+  .map((node) => ({
+    slug: node._sys.filename,
+    title: node.title,
+    dateLabel: node.dateLabel || "",
+    mode: node.mode || "",
+    image: node.image || "",
+  }));
+---
+
+<NosotrosEventsReact query={query} variables={variables} data={data} events={events} client:visible />

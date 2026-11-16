@@ -1,0 +1,8 @@
+---
+import PartnerLogosReact from "./PartnerLogosReact";
+import type { PageQueryProps } from "../eventos/eventData";
+
+const { query, variables, data } = Astro.props as PageQueryProps;
+---
+
+<PartnerLogosReact query={query} variables={variables} data={data} client:visible />

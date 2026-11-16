@@ -5,7 +5,7 @@
   "levelFrom": "B1",
   "levelTo": "C1",
   "tag": "",
-  "excerpt": "",
+  "excerpt": "Preparación intensiva 1 a 1 para el IELTS Academic: estrategia por sección, simulacros cronometrados y corrección detallada de writing y speaking.",
   "image": "/images/stock/1488190211105-8b0e65b80b4e.webp",
   "imageAlt": "IELTS Academic intensivo",
   "price": 1150,
@@ -21,5 +21,15 @@
   "isNew": false,
   "live": true,
   "showOnHome": false,
-  "homeOrder": 0
+  "homeOrder": 0,
+  "detail": {
+    "purchase": {
+      "benefits": [
+        "20 clases 1 a 1 de 60 min",
+        "Simulacros completos con corrección",
+        "Feedback detallado de writing y speaking"
+      ],
+      "heading": "Programa intensivo · 8 semanas"
+    }
+  }
 }

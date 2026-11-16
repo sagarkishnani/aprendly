@@ -1,0 +1,10 @@
+---
+import EmpresasEventsReact from "./EmpresasEventsReact";
+import type { EventSummary, PageQueryProps } from "../eventos/eventData";
+
+type Props = PageQueryProps & { nextEvent: EventSummary | null; pastEvents: EventSummary[] };
+
+const { query, variables, data, nextEvent, pastEvents } = Astro.props as Props;
+---
+
+<EmpresasEventsReact query={query} variables={variables} data={data} nextEvent={nextEvent} pastEvents={pastEvents} client:visible />

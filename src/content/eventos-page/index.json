@@ -1,1 +1,75 @@
-{ "seo": { "title": "", "description": "" } }
+{
+  "seo": {
+    "title": "Eventos y comunidad · Aprendly",
+    "description": "Workshops, bootcamps, clubs y alianzas con universidades y empresas donde practicas inglés con personas que van por lo mismo."
+  },
+  "hero": {
+    "eyebrow": "Eventos y comunidad",
+    "title": "Aprender inglés también es vivirlo.",
+    "text": "Workshops, bootcamps, clubs y alianzas con universidades y empresas donde practicas inglés con personas que van por lo mismo."
+  },
+  "upcoming": {
+    "badge": "Inscripciones abiertas",
+    "label": "Próximo evento"
+  },
+  "past": {
+    "title": "Eventos realizados",
+    "countSingular": "evento",
+    "countPlural": "eventos",
+    "filterAll": "Todos",
+    "filterInPerson": "Presenciales",
+    "filterOnline": "Online",
+    "emptyText": "Aún no hay eventos en esta modalidad."
+  },
+  "eventLabels": {
+    "dates": "Fechas",
+    "time": "Horario",
+    "levels": "Niveles",
+    "investment": "Inversión",
+    "nps": "NPS",
+    "attendees": "Asistentes",
+    "participants": "Participantes",
+    "viewEvent": "Ver evento",
+    "upcomingCta": "Reservar mi cupo"
+  },
+  "detail": {
+    "breadcrumbHome": "Inicio",
+    "breadcrumbEvents": "Eventos",
+    "upcomingKicker": "Próximo evento",
+    "levelsPrefix": "Niveles",
+    "flowTitle": "Así funciona",
+    "includesTitle": "Qué incluye",
+    "priceLabel": "Inversión",
+    "startLabel": "Inicio",
+    "timeLabel": "Horario",
+    "formatLabel": "Formato",
+    "levelsLabel": "Niveles",
+    "ctaLabel": "Reservar mi cupo",
+    "seatsSuffix": "reserva el tuyo",
+    "aboutTitle": "Sobre el evento",
+    "npsLabel": "NPS del evento",
+    "attendeesLabel": "Asistentes",
+    "galleryTitle": "Galería",
+    "nextEventLabel": "Próximo evento",
+    "nextEventCta": "Ver evento",
+    "helpTitle": "¿Tienes dudas?",
+    "helpText": "Escríbele a un asesor",
+    "helpCta": "Escribir",
+    "othersTitle": "Otros eventos"
+  },
+  "finalCta": {
+    "eyebrow": "Empieza hoy",
+    "title": "Tu primera clase es gratis. Tu ruta, también.",
+    "text": "Haz tu evaluación, te asignamos a tu docente y empiezas tus clases en una semana.",
+    "primary": {
+      "label": "Solicitar clase gratis",
+      "url": "/ruta-de-aprendizaje"
+    },
+    "secondary": {
+      "label": "Hablar con un asesor",
+      "url": "/contacto"
+    },
+    "image": "/images/rocket-3d.webp",
+    "imageAlt": ""
+  }
+}

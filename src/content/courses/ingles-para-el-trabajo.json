@@ -21,5 +21,200 @@
   "isNew": false,
   "live": true,
   "showOnHome": true,
-  "homeOrder": 2
+  "homeOrder": 2,
+  "detail": {
+    "headline": "Inglés para el trabajo: comunica con claridad y seguridad",
+    "badge": "PROGRAMA GRUPAL",
+    "stats": [
+      {
+        "text": "4 NIVELES",
+        "emphasis": true
+      },
+      {
+        "text": "48 CLASES EN VIVO DE 60 MIN",
+        "emphasis": true
+      },
+      {
+        "text": "98% valoraciones positivas (214)",
+        "emphasis": false
+      },
+      {
+        "text": "980 alumnos",
+        "emphasis": false
+      }
+    ],
+    "statsNote": "Clases en inglés con apoyo en español · Máx. 8 alumnos · Certificado Aprendly con nivel MCER",
+    "teachers": [
+      {
+        "teacher": "src/content/teachers/valeria.json"
+      },
+      {
+        "teacher": "src/content/teachers/camila.json"
+      },
+      {
+        "teacher": "src/content/teachers/lucia.json"
+      },
+      {
+        "teacher": "src/content/teachers/andrea.json"
+      }
+    ],
+    "video": {
+      "poster": "/images/curso-video.webp",
+      "posterAlt": "Equipo en reunión practicando inglés",
+      "url": "",
+      "caption": "Conoce el programa · 1:24"
+    },
+    "aboutTitle": "¿Qué aprenderás en este programa?",
+    "aboutText": "Practica reuniones, correos, presentaciones y negociación con situaciones reales de tu industria. Cada nivel dura 12 semanas con 3 clases en vivo por semana y feedback personalizado después de cada sesión.",
+    "facts": [
+      {
+        "icon": "modules",
+        "text": "4 niveles y 48 clases"
+      },
+      {
+        "icon": "clock",
+        "text": "Clases de 60 min"
+      },
+      {
+        "icon": "teacher",
+        "text": "Profesores certificados"
+      }
+    ],
+    "modules": [
+      {
+        "badge": "NIVEL 1 · A2",
+        "title": "Comunicación profesional esencial",
+        "image": "/images/stock/1521737604893-d14cc237f11d.webp",
+        "imageAlt": "Colegas conversando en una oficina",
+        "description": "Preséntate, habla de tu rol y participa en conversaciones cotidianas con colegas y clientes.",
+        "meta": "12 CLASES DE 60 MIN",
+        "lessons": [
+          {
+            "title": "Small talk en la oficina",
+            "duration": "60 min"
+          },
+          {
+            "title": "Describir tu rol y tu empresa",
+            "duration": "60 min"
+          },
+          {
+            "title": "Llamadas y videollamadas",
+            "duration": "60 min"
+          },
+          {
+            "title": "Correos cortos y claros",
+            "duration": "60 min"
+          }
+        ]
+      },
+      {
+        "badge": "NIVEL 2 · B1",
+        "title": "Reuniones y correos",
+        "image": "/images/stock/1552664730-d307ca884978.webp",
+        "imageAlt": "Equipo en una reunión de trabajo",
+        "description": "Participa en reuniones, da tu opinión y redacta correos formales con estructura y tono adecuados.",
+        "meta": "12 CLASES DE 60 MIN",
+        "lessons": [
+          {
+            "title": "Abrir y moderar reuniones",
+            "duration": "60 min"
+          },
+          {
+            "title": "Dar y pedir opiniones",
+            "duration": "60 min"
+          },
+          {
+            "title": "Correos de seguimiento",
+            "duration": "60 min"
+          },
+          {
+            "title": "Resolver malentendidos",
+            "duration": "60 min"
+          }
+        ]
+      },
+      {
+        "badge": "NIVEL 3 · B2",
+        "title": "Presentaciones con impacto",
+        "image": "/images/stock/1600880292203-757bb62b4baf.webp",
+        "imageAlt": "Colegas celebrando un logro",
+        "description": "Estructura presentaciones, explica datos y responde preguntas difíciles con confianza.",
+        "meta": "12 CLASES DE 60 MIN",
+        "lessons": [
+          {
+            "title": "Storytelling para presentaciones",
+            "duration": "60 min"
+          },
+          {
+            "title": "Explicar gráficos y datos",
+            "duration": "60 min"
+          },
+          {
+            "title": "Manejo de preguntas",
+            "duration": "60 min"
+          },
+          {
+            "title": "Pitch de 3 minutos",
+            "duration": "60 min"
+          }
+        ]
+      },
+      {
+        "badge": "NIVEL 4 · C1",
+        "title": "Negociación y liderazgo",
+        "image": "/images/stock/1531482615713-2afd69097998.webp",
+        "imageAlt": "Profesionales trabajando frente a una laptop",
+        "description": "Negocia, persuade y lidera equipos internacionales usando un inglés preciso y natural.",
+        "meta": "12 CLASES DE 60 MIN",
+        "lessons": [
+          {
+            "title": "Técnicas de negociación",
+            "duration": "60 min"
+          },
+          {
+            "title": "Lenguaje persuasivo",
+            "duration": "60 min"
+          },
+          {
+            "title": "Feedback a tu equipo",
+            "duration": "60 min"
+          },
+          {
+            "title": "Simulación final",
+            "duration": "60 min"
+          }
+        ]
+      }
+    ],
+    "certificate": {
+      "title": "Certificado Aprendly con nivel MCER",
+      "text": "Al aprobar cada nivel recibes un certificado digital verificable que puedes compartir en LinkedIn.",
+      "level": "B2"
+    },
+    "purchase": {
+      "heading": "Programa grupal · 4 niveles",
+      "originalPrice": 400,
+      "note": "+ clase de prueba gratis",
+      "levels": [
+        "A2",
+        "B1",
+        "B2",
+        "C1"
+      ],
+      "defaultLevel": "B1",
+      "schedules": [
+        "Lun · Mié · Vie — 7:00 a.m.",
+        "Lun · Mié · Vie — 7:30 p.m.",
+        "Mar · Jue — 8:00 p.m. + Sáb 9:00 a.m."
+      ],
+      "offerEndsAt": "2026-12-31T23:59:00.000Z",
+      "benefits": [
+        "Clases de 60 min con feedback en cada sesión",
+        "Grabaciones y material descargable",
+        "Examen mensual y reporte de progreso por módulo"
+      ],
+      "routeLabel": "Ruta completa · 4 niveles",
+      "routePrice": 1090
+    }
+  }
 }

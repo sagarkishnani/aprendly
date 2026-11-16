@@ -1,1 +1,36 @@
-{ "seo": { "title": "", "description": "" } }
+{
+  "seo": {
+    "title": "Contacto · Aprendly",
+    "description": "Cuéntanos qué necesitas y un asesor te responde en menos de 24 horas, ya sea para ti, tu equipo o tu institución."
+  },
+  "hero": {
+    "eyebrow": "Contacto",
+    "title": "Hablemos de tu próxima meta.",
+    "text": "Cuéntanos qué necesitas y un asesor te responde en menos de 24 horas, ya sea para ti, tu equipo o tu institución.",
+    "whatsappTitle": "WhatsApp",
+    "whatsappText": "Respuesta inmediata",
+    "emailTitle": "Correo",
+    "email": "hola@aprendlynow.com"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "question": "¿Cuánto demora la respuesta?",
+        "answer": "Respondemos en menos de 24 horas hábiles. Por WhatsApp, normalmente en minutos."
+      },
+      {
+        "question": "¿La clase de prueba tiene costo?",
+        "answer": "No. Tu diagnóstico y tu primera clase de prueba son gratuitos y sin compromiso."
+      },
+      {
+        "question": "¿Trabajan con empresas e instituciones?",
+        "answer": "Sí. Diseñamos programas a medida con diagnóstico de nivel, rutas por área y reportes de avance."
+      },
+      {
+        "question": "¿Qué medios de pago aceptan?",
+        "answer": "Tarjeta de crédito o débito, Yape y transferencia bancaria."
+      }
+    ]
+  }
+}

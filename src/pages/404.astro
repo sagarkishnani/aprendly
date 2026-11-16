@@ -1,18 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ArrowLink from "../components/ui/ArrowLink";
+import Eyebrow from "../components/ui/Eyebrow";
 
 const base = import.meta.env.BASE_URL || "/";
 ---
 
-<BaseLayout title="Página no encontrada — Aprendly">
-  <section class="flex min-h-[70vh] items-center">
+<BaseLayout title="Página no encontrada · Aprendly" noindex>
+  <section class="flex min-h-[70vh] items-center bg-surface-tint py-20">
     <div class="container-xl text-center">
-      <p class="font-mono text-body-sm uppercase tracking-[0.2em] text-accent">404</p>
-      <h1 class="mt-4 text-heading-lg">Esta página no existe</h1>
-      <p class="mx-auto mt-4 max-w-md text-body-lg text-content-muted">
-        Puede que el enlace esté roto o que la página se haya movido.
+      <Eyebrow variant="pink" tilted>Error 404</Eyebrow>
+      <h1 class="mx-auto mt-6 max-w-2xl text-heading-xl">Esta página se fue de intercambio.</h1>
+      <p class="mx-auto mt-5 max-w-md text-body-lg text-content-muted">
+        Puede que el enlace esté roto o que la página se haya movido. Te ayudamos a volver a tu ruta.
       </p>
-      <a class="btn-primary mt-8" href={base}>Volver al inicio</a>
+      <div class="mt-10 flex flex-wrap justify-center gap-3">
+        <ArrowLink href={base} size="lg">Volver al inicio</ArrowLink>
+        <ArrowLink href={`${base}cursos`} variant="outline" size="lg">Ver cursos</ArrowLink>
+      </div>
     </div>
   </section>
 </BaseLayout>

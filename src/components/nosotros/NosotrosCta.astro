@@ -1,0 +1,9 @@
+---
+import NosotrosCtaReact from "./NosotrosCtaReact";
+import type { TinaPageProps } from "../ruta/types";
+
+type Props = TinaPageProps;
+const { query, variables, data } = Astro.props;
+---
+
+<NosotrosCtaReact query={query} variables={variables} data={data} client:visible />

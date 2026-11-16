@@ -1,0 +1,15 @@
+---
+import EventDetailReact from "./EventDetailReact";
+import type { EventSummary, PageQueryProps } from "./eventData";
+
+interface Props {
+  eventQuery: PageQueryProps;
+  pageQuery: PageQueryProps;
+  nextEvent: EventSummary | null;
+  whatsappHref: string;
+}
+
+const { eventQuery, pageQuery, nextEvent, whatsappHref } = Astro.props;
+---
+
+<EventDetailReact eventQuery={eventQuery} pageQuery={pageQuery} nextEvent={nextEvent} whatsappHref={whatsappHref} client:load />

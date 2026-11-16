@@ -1,0 +1,8 @@
+---
+import FormatsReact from "./FormatsReact";
+import type { PageQueryProps } from "../eventos/eventData";
+
+const { query, variables, data } = Astro.props as PageQueryProps;
+---
+
+<FormatsReact query={query} variables={variables} data={data} client:visible />

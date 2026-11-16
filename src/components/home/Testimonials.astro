@@ -1,0 +1,10 @@
+---
+import TestimonialsReact from "./TestimonialsReact";
+import type { HomeQueryProps, HomeTestimonial } from "./types";
+
+type Props = HomeQueryProps & { testimonials: HomeTestimonial[] };
+
+const { query, variables, data, testimonials } = Astro.props as Props;
+---
+
+<TestimonialsReact query={query} variables={variables} data={data} testimonials={testimonials} client:visible />

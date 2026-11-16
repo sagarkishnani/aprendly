@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EventDetail from "../../components/eventos/EventDetail.astro";
+import OtherEvents from "../../components/eventos/OtherEvents.astro";
+import FinalCta from "../../components/eventos/FinalCta.astro";
+import client from "../../../tina/__generated__/client";
+import { loadEvents } from "../../components/eventos/loadEvents";
+import { loadWhatsappHref } from "../../components/eventos/whatsappHref";
+
+export async function getStaticPaths() {
+  const result = await client.queries.eventConnection({ first: 200 });
+  const edges = result.data?.eventConnection?.edges ?? [];
+  return edges
+    .map((edge: any) => edge?.node?._sys?.filename)
+    .filter(Boolean)
+    .map((slug: string) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const eventResult = await client.queries.event({ relativePath: `${slug}.json` });
+const pageResult = await client.queries.eventosPage({ relativePath: "index.json" });
+const event = (eventResult.data as any)?.event;
+
+const events = await loadEvents();
+const nextEvent = events.find((item) => item.upcoming) ?? null;
+const otherEvents = events.filter((item) => item.slug !== slug).slice(0, 3);
+const whatsappHref = await loadWhatsappHref();
+
+const eventQuery = { query: eventResult.query, variables: eventResult.variables, data: eventResult.data };
+const pageQuery = { query: pageResult.query, variables: pageResult.variables, data: pageResult.data };
+---
+
+<BaseLayout title={`${event?.title} · Eventos Aprendly`} description={event?.excerpt}>
+  <article>
+    <EventDetail eventQuery={eventQuery} pageQuery={pageQuery} nextEvent={nextEvent} whatsappHref={whatsappHref} />
+    <OtherEvents {...pageQuery} events={otherEvents} />
+  </article>
+  <FinalCta {...pageQuery} />
+</BaseLayout>

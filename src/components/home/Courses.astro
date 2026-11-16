@@ -1,0 +1,10 @@
+---
+import CoursesReact from "./CoursesReact";
+import type { HomeQueryProps, HomeCourse } from "./types";
+
+type Props = HomeQueryProps & { courses: HomeCourse[] };
+
+const { query, variables, data, courses } = Astro.props as Props;
+---
+
+<CoursesReact query={query} variables={variables} data={data} courses={courses} client:visible />

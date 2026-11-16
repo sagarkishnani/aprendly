@@ -5,7 +5,7 @@
   "levelFrom": "A2",
   "levelTo": "B2",
   "tag": "",
-  "excerpt": "",
+  "excerpt": "500 frases y expresiones listas para usar en el trabajo, los viajes y la vida diaria, organizadas por situación y con ejemplos.",
   "image": "/images/stock/1456513080510-7bf3a84b82f8.webp",
   "imageAlt": "Ebook: 500 frases útiles en inglés",
   "price": 39,
@@ -21,5 +21,15 @@
   "isNew": true,
   "live": false,
   "showOnHome": false,
-  "homeOrder": 0
+  "homeOrder": 0,
+  "detail": {
+    "purchase": {
+      "benefits": [
+        "Descarga inmediata en PDF",
+        "Frases organizadas por situación",
+        "Ejemplos de uso y notas de pronunciación"
+      ],
+      "ctaLabel": "Quiero mi ebook"
+    }
+  }
 }

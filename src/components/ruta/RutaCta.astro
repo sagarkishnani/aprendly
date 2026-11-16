@@ -1,0 +1,9 @@
+---
+import RutaCtaReact from "./RutaCtaReact";
+import type { TinaPageProps } from "./types";
+
+type Props = TinaPageProps;
+const { query, variables, data } = Astro.props;
+---
+
+<RutaCtaReact query={query} variables={variables} data={data} client:visible />

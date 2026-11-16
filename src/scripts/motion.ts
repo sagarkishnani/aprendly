@@ -19,8 +19,12 @@ const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
+function isAwaitingHydration(el: Element) {
+  return el.closest("astro-island[ssr]") !== null;
+}
+
 function all(selector: string): MotionElement[] {
-  return Array.from(document.querySelectorAll<MotionElement>(selector));
+  return Array.from(document.querySelectorAll<MotionElement>(selector)).filter((el) => !isAwaitingHydration(el));
 }
 
 function delayOf(el: HTMLElement): number {

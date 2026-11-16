@@ -1,0 +1,10 @@
+---
+import TeachersReact from "./TeachersReact";
+import type { HomeQueryProps, HomeTeacher } from "./types";
+
+type Props = HomeQueryProps & { teachers: HomeTeacher[] };
+
+const { query, variables, data, teachers } = Astro.props as Props;
+---
+
+<TeachersReact query={query} variables={variables} data={data} teachers={teachers} client:visible />

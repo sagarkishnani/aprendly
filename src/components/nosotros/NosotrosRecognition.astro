@@ -1,0 +1,9 @@
+---
+import NosotrosRecognitionReact from "./NosotrosRecognitionReact";
+import type { TinaPageProps } from "../ruta/types";
+
+type Props = TinaPageProps;
+const { query, variables, data } = Astro.props;
+---
+
+<NosotrosRecognitionReact query={query} variables={variables} data={data} client:visible />

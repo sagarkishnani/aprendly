@@ -1,0 +1,8 @@
+---
+import FinalCtaReact from "./FinalCtaReact";
+import type { PageQueryProps } from "./eventData";
+
+const { query, variables, data } = Astro.props as PageQueryProps;
+---
+
+<FinalCtaReact query={query} variables={variables} data={data} client:visible />

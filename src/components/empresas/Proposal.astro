@@ -1,0 +1,21 @@
+---
+import ProposalIntroReact from "./ProposalIntroReact";
+import DynamicForm from "../dynamic-form/DynamicForm.astro";
+import type { PageQueryProps } from "../eventos/eventData";
+
+const { query, variables, data } = Astro.props as PageQueryProps;
+---
+
+<section id="propuesta" class="scroll-mt-[84px] pb-20 md:pb-[120px]">
+  <div class="container-xl">
+    <div
+      data-reveal="scale"
+      class="grid items-start gap-10 rounded-[32px] bg-brand-primary-lightest px-5 py-10 sm:p-12 md:rounded-4xl lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-16 lg:p-16"
+    >
+      <ProposalIntroReact query={query} variables={variables} data={data} client:visible />
+      <div class="rounded-[28px] bg-white p-5 shadow-card sm:p-9">
+        <DynamicForm formSlug="propuesta-empresas" />
+      </div>
+    </div>
+  </div>
+</section>

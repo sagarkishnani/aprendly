@@ -1,15 +1,8 @@
 ---
 import HeroReact from "./HeroReact";
-import type { Locale } from "../../i18n/config";
+import type { HomeQueryProps } from "./types";
 
-interface Props {
-  query: string;
-  variables: object;
-  data: any;
-  locale: Locale;
-}
-
-const { query, variables, data, locale } = Astro.props;
+const { query, variables, data } = Astro.props as HomeQueryProps;
 ---
 
-<HeroReact query={query} variables={variables} data={data} locale={locale} client:load />
+<HeroReact query={query} variables={variables} data={data} client:load />

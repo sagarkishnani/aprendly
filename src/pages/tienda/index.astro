@@ -18,7 +18,7 @@ const lowStock = data?.shop?.lowStockThreshold ?? 5;
 const [products, categories] = await Promise.all([getAllProducts(), getAllCategories()]);
 ---
 
-<BaseLayout title={seo?.title} description={seo?.description}>
+<BaseLayout title={seo?.title} description={seo?.description} noindex={!wooConfigured}>
   <ShopHero query={query} variables={variables} data={data} locale={locale} />
 
   <section class="section">

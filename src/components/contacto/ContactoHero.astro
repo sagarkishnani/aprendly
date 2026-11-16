@@ -1,0 +1,24 @@
+---
+import ContactoHeroReact from "./ContactoHeroReact";
+import DynamicForm from "../dynamic-form/DynamicForm.astro";
+import type { PageQueryProps } from "../eventos/eventData";
+
+type Props = PageQueryProps & { whatsappHref: string };
+
+const { query, variables, data, whatsappHref } = Astro.props as Props;
+const interestParams = { interes: ["curso", "nivel", "evento"] };
+---
+
+<section class="pb-20 pt-4 md:pb-[120px] md:pt-6">
+  <div class="mx-auto max-w-[1408px] px-4 sm:px-6 lg:px-8">
+    <div
+      class="relative grid items-start gap-10 overflow-hidden rounded-[32px] bg-brand-primary px-5 py-12 text-white sm:px-10 md:rounded-[48px] lg:grid-cols-[minmax(0,1fr)_minmax(0,560px)] lg:gap-16 lg:px-16 lg:py-20"
+    >
+      <img src="/images/bg-shapes.svg" alt="" aria-hidden="true" class="pointer-events-none absolute right-0 top-0 hidden h-full w-auto opacity-60 md:block" />
+      <ContactoHeroReact query={query} variables={variables} data={data} whatsappHref={whatsappHref} client:load />
+      <div data-reveal="up" data-delay="120" class="relative rounded-[28px] bg-white p-5 text-content sm:rounded-[32px] sm:p-9">
+        <DynamicForm formSlug="contacto" paramAliases={interestParams} />
+      </div>
+    </div>
+  </div>
+</section>

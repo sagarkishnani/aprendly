@@ -1,1 +1,89 @@
-{ "seo": { "title": "", "description": "" } }
+{
+  "header": {
+    "homeLabel": "Inicio",
+    "coursesLabel": "Cursos",
+    "eyebrow": "CURSOS",
+    "title": "Elige un curso de inglés para tu meta.",
+    "intro": "Cursos grupales en vivo con niveles claros, paquetes de clases 1 a 1, talleres y recursos. ¿No sabes por dónde empezar?",
+    "introLinkLabel": "Haz tu diagnóstico gratis.",
+    "introLinkUrl": "/ruta-de-aprendizaje"
+  },
+  "filters": {
+    "typeTitle": "Explorar",
+    "typeOptions": [
+      { "value": "all", "label": "Todos los cursos", "cardLabel": "", "isNew": false },
+      { "value": "grupal", "label": "Cursos grupales", "cardLabel": "GRUPAL EN VIVO", "isNew": false },
+      { "value": "1a1", "label": "Clases 1 a 1", "cardLabel": "CLASES 1 A 1", "isNew": false },
+      { "value": "paquete", "label": "Paquetes de horas", "cardLabel": "PAQUETE DE HORAS", "isNew": false },
+      { "value": "taller", "label": "Talleres y eventos", "cardLabel": "TALLER", "isNew": false },
+      { "value": "recurso", "label": "Recursos y ebooks", "cardLabel": "RECURSO DIGITAL", "isNew": true }
+    ],
+    "goalTitle": "Objetivo",
+    "goalOptions": [
+      { "value": "all", "label": "Todos los objetivos" },
+      { "value": "conversacion", "label": "Conversación" },
+      { "value": "trabajo", "label": "Trabajo y negocios" },
+      { "value": "viajes", "label": "Viajes" },
+      { "value": "examenes", "label": "Exámenes internacionales" },
+      { "value": "ninos", "label": "Niños y adolescentes" },
+      { "value": "cero", "label": "Desde cero" }
+    ],
+    "levelTitle": "Nivel (MCER)",
+    "newLabel": "Nuevo",
+    "liveLabel": "Solo en vivo",
+    "sortLabel": "Ordenar por:",
+    "sortPopular": "Más populares",
+    "sortRating": "Mejor valorados",
+    "sortPriceLow": "Precio: menor a mayor",
+    "sortPriceHigh": "Precio: mayor a menor",
+    "countSingular": "curso",
+    "countPlural": "cursos",
+    "emptyTitle": "No encontramos cursos con esos filtros",
+    "resetLabel": "Limpiar filtros",
+    "filtersButton": "Filtros"
+  },
+  "card": {
+    "bestSellerLabel": "TOP VENTAS",
+    "newLabel": "NUEVO",
+    "studentsSuffix": "alumnos",
+    "ctaLabel": "Ver curso"
+  },
+  "detail": {
+    "tabInfo": "Información",
+    "tabContent": "Contenido",
+    "tabTeachers": "Profesores",
+    "tabCertificate": "Certificado",
+    "teachersCountLabel": "profesores certificados",
+    "teachersTitle": "Tus profesores",
+    "reviewsLabel": "reseñas",
+    "certificateTitle": "Certificado",
+    "aboutFallbackTitle": "Sobre este curso",
+    "playLabel": "Reproducir video",
+    "yourCourseLabel": "Tu curso",
+    "levelWord": "Nivel",
+    "startLevelLabel": "Nivel de inicio",
+    "scheduleLabel": "Horario",
+    "enrollLabel": "Quiero inscribirme",
+    "enrollUrl": "/contacto",
+    "offerEndsLabel": "La oferta termina en",
+    "savingsLabel": "Ahorras",
+    "routeCtaLabel": "Consultar",
+    "advisorTitle": "¿Dudas sobre el programa?",
+    "advisorText": "Habla con un asesor",
+    "advisorButton": "Escribir",
+    "advisorUrl": "/contacto"
+  },
+  "cta": {
+    "eyebrow": "EMPIEZA HOY",
+    "title": "Tu primera clase es gratis. Tu ruta, también.",
+    "text": "Haz tu evaluación, te asignamos a tu docente y empiezas tus clases en una semana.",
+    "primary": { "label": "Solicitar clase gratis", "url": "/ruta-de-aprendizaje" },
+    "secondary": { "label": "Hablar con un asesor", "url": "/contacto" },
+    "image": "/images/rocket-3d.webp",
+    "imageAlt": ""
+  },
+  "seo": {
+    "title": "Cursos de inglés online en vivo — Aprendly",
+    "description": "Cursos grupales en vivo, clases 1 a 1, paquetes de horas, talleres y recursos para aprender inglés según tu meta y tu nivel MCER."
+  }
+}

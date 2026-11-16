@@ -1,0 +1,10 @@
+---
+import OtherEventsReact from "./OtherEventsReact";
+import type { EventSummary, PageQueryProps } from "./eventData";
+
+type Props = PageQueryProps & { events: EventSummary[] };
+
+const { query, variables, data, events } = Astro.props as Props;
+---
+
+<OtherEventsReact query={query} variables={variables} data={data} events={events} client:visible />

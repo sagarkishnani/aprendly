@@ -1,0 +1,8 @@
+---
+import LearningRouteReact from "./LearningRouteReact";
+import type { HomeQueryProps } from "./types";
+
+const { query, variables, data } = Astro.props as HomeQueryProps;
+---
+
+<LearningRouteReact query={query} variables={variables} data={data} client:visible />

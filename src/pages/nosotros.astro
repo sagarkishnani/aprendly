@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NosotrosHero from "../components/nosotros/NosotrosHero.astro";
+import NosotrosAbout from "../components/nosotros/NosotrosAbout.astro";
+import NosotrosRecognition from "../components/nosotros/NosotrosRecognition.astro";
+import NosotrosPartners from "../components/nosotros/NosotrosPartners.astro";
+import NosotrosEvents from "../components/nosotros/NosotrosEvents.astro";
+import NosotrosTeam from "../components/nosotros/NosotrosTeam.astro";
+import NosotrosSteps from "../components/nosotros/NosotrosSteps.astro";
+import NosotrosCta from "../components/nosotros/NosotrosCta.astro";
+import client from "../../tina/__generated__/client";
+
+const { query, variables, data } = await client.queries.nosotrosPage({ relativePath: "index.json" });
+const seo = data?.nosotrosPage?.seo;
+const page = { query, variables, data };
+---
+
+<BaseLayout title={seo?.title || undefined} description={seo?.description || undefined}>
+  <div class="overflow-x-clip">
+    <NosotrosHero {...page} />
+    <NosotrosAbout {...page} />
+    <NosotrosRecognition {...page} />
+    <NosotrosPartners {...page} />
+    <NosotrosEvents {...page} />
+    <NosotrosTeam {...page} />
+    <NosotrosSteps {...page} />
+    <NosotrosCta {...page} />
+  </div>
+</BaseLayout>

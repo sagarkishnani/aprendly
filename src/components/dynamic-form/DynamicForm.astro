@@ -7,9 +7,10 @@ import { isLocale } from "../../i18n/config";
 interface Props {
   formSlug: string;
   prefill?: Record<string, string>;
+  paramAliases?: Record<string, string[]>;
 }
 
-const { formSlug, prefill } = Astro.props;
+const { formSlug, prefill, paramAliases } = Astro.props;
 
 const result = await client.queries.dynamicForms({
   relativePath: `${formSlug}.json`,
@@ -22,6 +23,7 @@ const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : getLocale(A
   variables={result.variables}
   data={result.data}
   prefill={prefill}
+  paramAliases={paramAliases}
   locale={locale}
   client:load
 />

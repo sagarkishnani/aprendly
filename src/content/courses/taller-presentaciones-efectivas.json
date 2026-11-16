@@ -5,7 +5,7 @@
   "levelFrom": "B1",
   "levelTo": "C2",
   "tag": "",
-  "excerpt": "",
+  "excerpt": "Taller práctico de dos sesiones para estructurar y presentar ideas en inglés con claridad, seguridad y buen manejo de preguntas.",
   "image": "/images/stock/1524178232363-1fb2b075b655.webp",
   "imageAlt": "Taller: presentaciones efectivas en inglés",
   "price": 120,
@@ -21,5 +21,16 @@
   "isNew": true,
   "live": true,
   "showOnHome": false,
-  "homeOrder": 0
+  "homeOrder": 0,
+  "detail": {
+    "purchase": {
+      "benefits": [
+        "2 sesiones en vivo de 2 horas",
+        "Práctica con feedback personalizado",
+        "Plantillas para tus presentaciones"
+      ],
+      "heading": "Taller · 4 horas",
+      "ctaLabel": "Reservar mi cupo"
+    }
+  }
 }

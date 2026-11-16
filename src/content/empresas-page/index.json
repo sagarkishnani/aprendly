@@ -1,1 +1,150 @@
-{ "seo": { "title": "", "description": "" } }
+{
+  "seo": {
+    "title": "Inglés para empresas e instituciones · Aprendly",
+    "description": "Programas corporativos, bootcamps, eventos, ideatones y talleres de inglés a la medida de tu organización."
+  },
+  "hero": {
+    "eyebrow": "Para empresas e instituciones",
+    "title": "Inglés a la medida de tu organización.",
+    "text": "Programas corporativos, bootcamps, eventos, ideatones y talleres Aprendly para equipos, universidades e instituciones que quieren llevar su inglés a otro nivel.",
+    "primary": {
+      "label": "Solicitar propuesta",
+      "url": "#propuesta"
+    },
+    "secondary": {
+      "label": "Ver formatos",
+      "url": "#formatos"
+    },
+    "image": "/images/empresas-hero.webp",
+    "imageAlt": "Asistentes a un taller de Aprendly",
+    "stats": [
+      {
+        "value": "500+",
+        "label": "Participantes en eventos"
+      },
+      {
+        "value": "7+",
+        "label": "Aliados institucionales"
+      }
+    ]
+  },
+  "logos": {
+    "title": "Ya confían\nen nosotros",
+    "items": [
+      {
+        "name": "Innova ULima",
+        "image": "/images/logos/innova-ulima.webp",
+        "height": 40
+      },
+      {
+        "name": "Universidad Científica del Sur",
+        "image": "/images/logos/ucsur.webp",
+        "height": 44
+      },
+      {
+        "name": "AFP Integra",
+        "image": "/images/logos/afp-integra.webp",
+        "height": 44
+      },
+      {
+        "name": "COFIDE",
+        "image": "/images/logos/cofide.webp",
+        "height": 46
+      },
+      {
+        "name": "HUB UDEP",
+        "image": "/images/logos/hubudep.webp",
+        "height": 34
+      },
+      {
+        "name": "Ventures Unheval",
+        "image": "/images/logos/ventures-unheval.webp",
+        "height": 64
+      }
+    ]
+  },
+  "formats": {
+    "eyebrow": "Formatos",
+    "title": "Contrátanos en el formato que necesitas.",
+    "text": "Diseñamos cada experiencia según tus objetivos, el nivel de tu equipo y el tiempo disponible.",
+    "items": [
+      {
+        "title": "Programas corporativos",
+        "text": "Inglés para todo tu equipo con evaluación de nivel, rutas por área y reportes de avance para RR. HH.",
+        "icon": "building",
+        "tags": [
+          "In-company",
+          "Online o presencial"
+        ],
+        "featured": true
+      },
+      {
+        "title": "Bootcamps",
+        "text": "Programas intensivos y prácticos para resolver casos reales en inglés, como English for Engineers.",
+        "icon": "bolt",
+        "tags": [
+          "Intensivo",
+          "Casos reales"
+        ],
+        "featured": false
+      },
+      {
+        "title": "Eventos",
+        "text": "Paneles, workshops y conversatorios sobre inglés, empleabilidad y oportunidades globales.",
+        "icon": "screen",
+        "tags": [
+          "Paneles",
+          "Workshops"
+        ],
+        "featured": false
+      },
+      {
+        "title": "Ideatones",
+        "text": "Retos de innovación en equipo donde el inglés es la herramienta para crear y presentar soluciones.",
+        "icon": "bulb",
+        "tags": [
+          "Innovación",
+          "Trabajo en equipo"
+        ],
+        "featured": false
+      },
+      {
+        "title": "Talleres Aprendly",
+        "text": "Talleres inmersivos como Go Global, Coffee Talks y Movie Club, adaptados a tu comunidad.",
+        "icon": "star",
+        "tags": [
+          "Inmersivo",
+          "A medida"
+        ],
+        "featured": false
+      }
+    ]
+  },
+  "events": {
+    "eyebrow": "Eventos y comunidad",
+    "title": "Aprender inglés también es vivirlo.",
+    "text": "Paneles, talleres, clubs y alianzas con universidades donde practicas inglés con otras personas que van por lo mismo.",
+    "upcomingBadge": "Próximo evento · Inscripciones abiertas",
+    "pastLimit": 6
+  },
+  "eventLabels": {
+    "dates": "Fechas",
+    "time": "Horario",
+    "levels": "Niveles",
+    "investment": "Inversión",
+    "nps": "NPS",
+    "attendees": "Asistentes",
+    "participants": "Participantes",
+    "viewEvent": "Ver evento",
+    "upcomingCta": "Reservar mi cupo"
+  },
+  "proposal": {
+    "title": "¿Armamos algo juntos?",
+    "text": "Cuéntanos tu objetivo y te enviamos una propuesta a la medida en menos de 24 horas.",
+    "points": [
+      "Diagnóstico de nivel para todo el equipo",
+      "Rutas por área, cargo y objetivo",
+      "Reportes de avance mensuales"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+---
+import LogosReact from "./LogosReact";
+import type { HomeQueryProps } from "./types";
+
+const { query, variables, data } = Astro.props as HomeQueryProps;
+---
+
+<LogosReact query={query} variables={variables} data={data} client:visible />

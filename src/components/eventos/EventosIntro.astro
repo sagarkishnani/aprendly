@@ -1,0 +1,10 @@
+---
+import EventosIntroReact from "./EventosIntroReact";
+import type { EventSummary, PageQueryProps } from "./eventData";
+
+type Props = PageQueryProps & { nextEvent: EventSummary | null };
+
+const { query, variables, data, nextEvent } = Astro.props as Props;
+---
+
+<EventosIntroReact query={query} variables={variables} data={data} nextEvent={nextEvent} client:load />

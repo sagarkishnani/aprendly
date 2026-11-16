@@ -289,7 +289,7 @@ function verifyTurnstile(string $secret, string $token, string $remoteIp): bool 
 }
 
 function getSubjectPrefix(string $type): string {
-    $map = ['contacto' => 'Nuevo contacto web'];
+    $map = ['contacto' => 'Nuevo contacto web', 'propuesta-empresas' => 'Nueva solicitud de propuesta para organizaciones'];
     return $map[$type] ?? 'Nuevo formulario web';
 }
 
@@ -340,11 +340,26 @@ function getFieldRows(string $type, array $data): array {
     switch ($type) {
         case 'contacto':
             return [
-                'Nombre'   => trim(($data['nombre'] ?? '') . ' ' . ($data['apellido'] ?? '')),
-                'Empresa'  => $data['empresa'] ?? '',
-                'Teléfono' => $data['telefono'] ?? '',
-                'Email'    => $data['correo'] ?? $data['email'] ?? '',
-                'Mensaje'  => $data['mensaje'] ?? $data['comentario'] ?? '',
+                'Para quién'            => $data['paraQuien'] ?? '',
+                'Nombre'                => trim(($data['nombre'] ?? '') . ' ' . ($data['apellido'] ?? '')),
+                'Teléfono'              => $data['telefono'] ?? '',
+                'Email'                 => $data['correo'] ?? $data['email'] ?? '',
+                'Empresa'               => $data['empresa'] ?? '',
+                'Colaboradores'         => $data['colaboradores'] ?? '',
+                'Institución educativa' => $data['institucion'] ?? '',
+                'Alumnos'               => $data['alumnos'] ?? '',
+                'Interés'               => $data['interes'] ?? '',
+                'Mensaje'               => $data['mensaje'] ?? $data['comentario'] ?? '',
+            ];
+        case 'propuesta-empresas':
+            return [
+                'Tipo de organización' => $data['tipoOrganizacion'] ?? '',
+                'Organización'         => $data['organizacion'] ?? '',
+                'Contacto'             => $data['nombre'] ?? '',
+                'Email'                => $data['correo'] ?? '',
+                'Teléfono'             => $data['telefono'] ?? '',
+                'Tamaño del equipo'    => $data['tamano'] ?? '',
+                'Mensaje'              => $data['mensaje'] ?? '',
             ];
         default:
             $rows = [];

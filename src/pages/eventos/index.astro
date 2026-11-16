@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EventosIntro from "../../components/eventos/EventosIntro.astro";
+import PastEvents from "../../components/eventos/PastEvents.astro";
+import FinalCta from "../../components/eventos/FinalCta.astro";
+import client from "../../../tina/__generated__/client";
+import { loadEvents } from "../../components/eventos/loadEvents";
+
+const result = await client.queries.eventosPage({ relativePath: "index.json" });
+const { query, variables, data } = result;
+const seo = (data as any)?.eventosPage?.seo;
+
+const events = await loadEvents();
+const nextEvent = events.find((event) => event.upcoming) ?? null;
+const pastEvents = events.filter((event) => !event.upcoming);
+---
+
+<BaseLayout title={seo?.title} description={seo?.description}>
+  <EventosIntro query={query} variables={variables} data={data} nextEvent={nextEvent} />
+  <PastEvents query={query} variables={variables} data={data} events={pastEvents} />
+  <FinalCta query={query} variables={variables} data={data} />
+</BaseLayout>

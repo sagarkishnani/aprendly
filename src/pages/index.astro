@@ -1,20 +1,113 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/home/Hero.astro";
-import Features from "../components/home/Features.astro";
-import CTA from "../components/home/CTA.astro";
+import Logos from "../components/home/Logos.astro";
+import LearningRoute from "../components/home/LearningRoute.astro";
+import OneToOne from "../components/home/OneToOne.astro";
+import Teachers from "../components/home/Teachers.astro";
+import Events from "../components/home/Events.astro";
+import Courses from "../components/home/Courses.astro";
+import Organizations from "../components/home/Organizations.astro";
+import Testimonials from "../components/home/Testimonials.astro";
+import FinalCta from "../components/home/FinalCta.astro";
 import client from "../../tina/__generated__/client";
-import { getLocale } from "../utils/i18n";
-import { isLocale } from "../i18n/config";
+import type { HomeCourse, HomeEvent, HomeTeacher, HomeTestimonial } from "../components/home/types";
 
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : getLocale(Astro.url);
-const result = await client.queries.home({ relativePath: "index.json" });
-const { query, variables, data } = result;
-const seo = data?.home?.seo;
+const PAST_EVENTS_LIMIT = 6;
+
+const home = await client.queries.home({ relativePath: "index.json" });
+const sectionProps = { query: home.query, variables: home.variables, data: home.data };
+const seo = home.data?.home?.seo;
+
+function connectionNodes(connection: any): any[] {
+  return (connection?.edges || []).map((edge: any) => edge?.node).filter(Boolean);
+}
+
+const [courseResult, teacherResult, eventResult, testimonialResult] = await Promise.all([
+  client.queries.courseConnection({ first: 100 }),
+  client.queries.teacherConnection({ first: 100 }),
+  client.queries.eventConnection({ first: 100 }),
+  client.queries.testimonialConnection({ first: 100 }),
+]);
+
+const courses: HomeCourse[] = connectionNodes(courseResult.data.courseConnection)
+  .filter((course) => course.showOnHome)
+  .sort((a, b) => (a.homeOrder ?? 0) - (b.homeOrder ?? 0))
+  .map((course) => ({
+    slug: course._sys.filename,
+    title: course.title,
+    tag: course.tag || "",
+    excerpt: course.excerpt || "",
+    image: course.image || "",
+    imageAlt: course.imageAlt || "",
+    price: course.price ?? null,
+    priceUnit: course.priceUnit || "",
+    levelsLabel: course.levelsLabel || "",
+    format: course.format || "",
+    levelFrom: course.levelFrom || "",
+    duration: course.duration || "",
+  }));
+
+const teachers: HomeTeacher[] = connectionNodes(teacherResult.data.teacherConnection)
+  .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  .map((teacher) => ({
+    name: teacher.name,
+    tag: teacher.tag || "",
+    bio: teacher.bio || "",
+    skills: (teacher.skills || []).filter(Boolean),
+    image: teacher.image || "",
+  }));
+
+function toHomeEvent(event: any): HomeEvent {
+  return {
+    slug: event._sys.filename,
+    title: event.title,
+    kicker: event.kicker || "",
+    dateLabel: event.dateLabel || "",
+    time: event.time || "",
+    mode: event.mode || "",
+    place: event.place || "",
+    levels: event.levels || "",
+    price: event.price ?? null,
+    priceNote: event.priceNote || "",
+    image: event.image || "",
+    excerpt: event.excerpt || "",
+    nps: event.nps ?? null,
+    attendees: event.attendees ?? null,
+  };
+}
+
+const byStartDateDesc = (a: any, b: any) => String(b.startDate || "").localeCompare(String(a.startDate || ""));
+const events = connectionNodes(eventResult.data.eventConnection);
+const upcoming = events.filter((event) => event.upcoming).sort((a, b) => -byStartDateDesc(a, b));
+const nextEvent = upcoming.length > 0 ? toHomeEvent(upcoming[0]) : null;
+const pastEvents = events
+  .filter((event) => !event.upcoming)
+  .sort(byStartDateDesc)
+  .slice(0, PAST_EVENTS_LIMIT)
+  .map(toHomeEvent);
+
+const testimonials: HomeTestimonial[] = connectionNodes(testimonialResult.data.testimonialConnection)
+  .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  .map((testimonial) => ({
+    name: testimonial.name,
+    role: testimonial.role || "",
+    quote: testimonial.quote || "",
+    image: testimonial.image || "",
+  }));
 ---
 
-<BaseLayout title={seo?.title} description={seo?.description}>
-  <Hero query={query} variables={variables} data={data} locale={locale} />
-  <Features query={query} variables={variables} data={data} locale={locale} />
-  <CTA query={query} variables={variables} data={data} locale={locale} />
+<BaseLayout title={seo?.title ?? undefined} description={seo?.description ?? undefined}>
+  <div class="overflow-x-clip">
+    <Hero {...sectionProps} />
+    <Logos {...sectionProps} />
+    <LearningRoute {...sectionProps} />
+    <OneToOne {...sectionProps} />
+    <Teachers {...sectionProps} teachers={teachers} />
+    <Events {...sectionProps} nextEvent={nextEvent} pastEvents={pastEvents} />
+    <Courses {...sectionProps} courses={courses} />
+    <Organizations {...sectionProps} />
+    <Testimonials {...sectionProps} testimonials={testimonials} />
+    <FinalCta {...sectionProps} />
+  </div>
 </BaseLayout>

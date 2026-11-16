@@ -1,1 +1,135 @@
-{ "seo": { "title": "", "description": "" } }
+{
+  "seo": {
+    "title": "Ruta de aprendizaje — Aprendly",
+    "description": "Descubre tu nivel de inglés con un diagnóstico gratuito de 40 minutos y simula tu ruta: niveles, formato y tiempo estimado para llegar a tu meta."
+  },
+  "hero": {
+    "eyebrow": "RUTA DE APRENDIZAJE",
+    "titleLead": "Tu ruta empieza con un",
+    "titleHighlight": "diagnóstico.",
+    "text": "En 40 minutos descubrimos tu nivel real y qué necesitas para llegar a tu meta. Luego te proponemos la mejor combinación de niveles, formato y tiempo. Sin costo y sin compromiso.",
+    "primary": { "label": "Empezar diagnóstico gratis", "url": "#simulador" },
+    "secondary": { "label": "Hablar con un asesor", "url": "/contacto?interes=asesoria" },
+    "image": "/images/ruta-hero.webp",
+    "imageAlt": "Alumno haciendo su diagnóstico online",
+    "result": {
+      "title": "Resultado del diagnóstico",
+      "level": "B1",
+      "skills": [
+        { "name": "Speaking", "percent": 62, "tone": "pink" },
+        { "name": "Listening", "percent": 74, "tone": "purple" },
+        { "name": "Reading", "percent": 81, "tone": "purple" },
+        { "name": "Writing", "percent": 58, "tone": "pink" }
+      ]
+    }
+  },
+  "process": {
+    "title": "Cómo funciona tu ruta",
+    "text": "Un proceso claro de principio a fin, para que siempre sepas dónde estás y qué te falta.",
+    "scrollHint": "SCROLL",
+    "steps": [
+      {
+        "time": "40 MIN",
+        "title": "Evaluación de nivel",
+        "text": "Un test de gramática, lectura y comprensión auditiva, más una conversación con un profesor para evaluar tu speaking y tu objetivo."
+      },
+      {
+        "time": "1 SEMANA",
+        "title": "Te asignamos a tu docente",
+        "text": "Elegimos al profesor ideal según tu nivel, meta y horario, y empiezas tus clases en una semana."
+      },
+      {
+        "time": "CADA CLASE",
+        "title": "Clases de 60 min con feedback",
+        "text": "Cada sesión dura 60 minutos y recibes feedback personalizado al terminar."
+      },
+      {
+        "time": "CADA MES",
+        "title": "Examen mensual y reporte",
+        "text": "Rindes un examen mensual y, al final de cada módulo, recibes un detalle de tu progreso."
+      }
+    ]
+  },
+  "simulator": {
+    "eyebrow": "SIMULA TU RUTA",
+    "title": "¿A dónde quieres llegar?",
+    "text": "Elige tu objetivo y tu nivel aproximado. Te mostramos una ruta estimada que validaremos en tu diagnóstico.",
+    "goalsLabel": "1. Tu objetivo",
+    "levelsLabel": "2. Tu nivel aproximado",
+    "resultEyebrow": "TU RUTA ESTIMADA",
+    "resultTitleTemplate": "{programa}: de {desde} a {hasta}",
+    "legendCurrent": "Tu nivel",
+    "legendRoute": "Tu ruta",
+    "legendGoal": "Tu meta",
+    "levelsStatLabel": "Niveles",
+    "timeStatLabel": "Tiempo estimado",
+    "formatStatLabel": "Formato sugerido",
+    "monthsPerLevel": 3,
+    "focusLabel": "Lo que trabajarás",
+    "disclaimer": "Estimación referencial. Tu profesor la ajusta tras el diagnóstico.",
+    "cta": { "label": "Validar con diagnóstico gratis", "url": "/contacto?interes=diagnostico-gratis" },
+    "goals": [
+      {
+        "label": "Crecer en mi trabajo",
+        "program": "Inglés para el trabajo",
+        "targetLevel": "B2",
+        "format": "Grupal + 1 a 1",
+        "focus": ["Reuniones", "Correos", "Presentaciones", "Negociación"]
+      },
+      {
+        "label": "Viajar con confianza",
+        "program": "Inglés para viajar",
+        "targetLevel": "B1",
+        "format": "Grupal en vivo",
+        "focus": ["Aeropuertos y hoteles", "Pronunciación", "Conversación diaria"]
+      },
+      {
+        "label": "Aprobar un examen",
+        "program": "Preparación TOEFL / IELTS",
+        "targetLevel": "C1",
+        "format": "1 a 1 intensivo",
+        "focus": ["Simulacros", "Writing con feedback", "Speaking", "Estrategia"]
+      },
+      {
+        "label": "Estudiar en el extranjero",
+        "program": "Inglés académico",
+        "targetLevel": "C1",
+        "format": "1 a 1 + grupal",
+        "focus": ["Inglés académico", "Ensayos", "Entrevistas", "Listening"]
+      },
+      {
+        "label": "Hablar con fluidez",
+        "program": "Inglés para conversar",
+        "targetLevel": "B2",
+        "format": "Grupal + Conversation Club",
+        "focus": ["Fluidez", "Vocabulario", "Pronunciación", "Escucha"]
+      }
+    ],
+    "startLevels": [
+      { "code": "A1", "name": "Principiante", "tip": "Conoces palabras y frases muy básicas. Puedes presentarte y responder preguntas simples sobre ti." },
+      { "code": "A2", "name": "Básico", "tip": "Te comunicas en situaciones cotidianas y conocidas. Entiendes frases frecuentes, aunque aún dudas al hablar." },
+      { "code": "B1", "name": "Intermedio", "tip": "Te defiendes en viajes y en el trabajo con temas conocidos. Puedes contar experiencias y dar tu opinión de forma sencilla." },
+      { "code": "B2", "name": "Intermedio alto", "tip": "Conversas con fluidez y naturalidad en la mayoría de contextos. Participas en reuniones y debates sin mucho esfuerzo." },
+      { "code": "C1", "name": "Avanzado", "tip": "Usas el inglés con precisión en contextos académicos y profesionales. Entiendes textos complejos y matices del idioma." }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": [
+      { "question": "¿El diagnóstico tiene algún costo?", "answer": "No. La evaluación de 40 minutos y la primera clase de prueba son gratuitas y no te comprometen a comprar ningún curso." },
+      { "question": "¿Puedo elegir a mi profesor?", "answer": "Nosotros te asignamos al docente ideal según tu nivel, objetivo y horario. Empiezas tus clases en una semana." },
+      { "question": "¿Qué es el MCER?", "answer": "Es el Marco Común Europeo de Referencia para las lenguas: una escala internacional de seis niveles (A1 a C2) que usan universidades, empresas y exámenes como TOEFL, IELTS y Cambridge." },
+      { "question": "¿Cuánto tiempo toma subir un nivel?", "answer": "En promedio 12 semanas, con clases de 60 minutos 3 veces por semana, un examen mensual y un reporte de progreso al final de cada módulo." },
+      { "question": "¿Puedo cambiar de formato en el camino?", "answer": "Sí. Puedes combinar cursos grupales, clases 1 a 1 y talleres según cómo avances y tu disponibilidad." }
+    ]
+  },
+  "cta": {
+    "eyebrow": "EMPIEZA HOY",
+    "title": "Tu primera clase es gratis. Tu ruta, también.",
+    "text": "Haz tu evaluación, te asignamos a tu docente y empiezas tus clases en una semana.",
+    "primary": { "label": "Solicitar clase gratis", "url": "/contacto?interes=clase-gratis" },
+    "secondary": { "label": "Hablar con un asesor", "url": "/contacto?interes=asesoria" },
+    "image": "/images/rocket-3d.webp",
+    "imageAlt": ""
+  }
+}

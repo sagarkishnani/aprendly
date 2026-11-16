@@ -11,6 +11,7 @@ export const eventCollection: Collection = {
   fields: [
     { name: "title", label: "Título", type: "string", isTitle: true, required: true },
     { name: "kicker", label: "Tipo de evento", type: "string", description: "Ej.: Taller inmersivo, Webinar" },
+    { name: "category", label: "Categoría", type: "string", description: "Ej.: Conversation club. Se muestra en la tarjeta de Para empresas." },
     { name: "upcoming", label: "Es el próximo evento", type: "boolean" },
     { name: "startDate", label: "Fecha de inicio (para ordenar)", type: "datetime" },
     { name: "dateLabel", label: "Fecha visible", type: "string", description: "Ej.: Sáb 7 – 28 nov 2026" },
@@ -22,9 +23,15 @@ export const eventCollection: Collection = {
     { name: "priceNote", label: "Nota del precio", type: "string" },
     { name: "seats", label: "Aviso de cupos", type: "string" },
     { name: "image", label: "Imagen principal", type: "image" },
+    { name: "imageAlt", label: "Texto alternativo de la imagen", type: "string" },
     { name: "gallery", label: "Galería", type: "image", list: true },
     { name: "excerpt", label: "Resumen", type: "string", ui: { component: "textarea" } },
+    { name: "teaser", label: "Resumen corto (tarjeta lateral)", type: "string", description: "Ej.: 4 sábados de cine y conversación en inglés. Inicia el 7 de noviembre." },
+    { name: "introTitle", label: "Título de la introducción", type: "string", description: "Ej.: ¿Qué es el Movie Club?" },
     { name: "intro", label: "Introducción", type: "string", ui: { component: "textarea" } },
+    { name: "about", label: "Sobre el evento (eventos realizados)", type: "string", ui: { component: "textarea" } },
+    { name: "startLabel", label: "Inicio (tarjeta de precio)", type: "string", description: "Ej.: Sábado 7 de noviembre" },
+    { name: "formatLabel", label: "Formato (tarjeta de precio)", type: "string", description: "Ej.: 4 sesiones de 90 min" },
     {
       type: "object",
       name: "flow",
@@ -36,6 +43,7 @@ export const eventCollection: Collection = {
         { name: "text", label: "Texto", type: "string", ui: { component: "textarea" } },
       ],
     },
+    { name: "sessionsTitle", label: "Título de las sesiones", type: "string", description: "Ej.: Tu ruta por la película" },
     {
       type: "object",
       name: "sessions",

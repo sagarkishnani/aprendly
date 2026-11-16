@@ -1,0 +1,54 @@
+---
+import { ArrowIcon } from "../ui/ArrowLink";
+import { formatPostDate } from "./formatPostDate";
+import { mediaUrl } from "../../utils/mediaUrl";
+
+interface Props {
+  href: string;
+  title: string;
+  excerpt?: string;
+  coverImage?: string | null;
+  date?: string | null;
+  readTime?: string | null;
+  tags?: (string | null)[] | null;
+  featured?: boolean | null;
+  locale: string;
+}
+
+const { href, title, excerpt, coverImage, date, readTime, tags, featured, locale } = Astro.props;
+const meta = [formatPostDate(date, locale), readTime].filter(Boolean).join(" · ");
+const visibleTags = (tags || []).filter(Boolean);
+---
+
+<a
+  href={href}
+  class="group flex flex-col overflow-hidden rounded-3xl bg-surface shadow-soft transition-[box-shadow,transform] duration-500 ease-out-expo hover:-translate-y-1 hover:shadow-card"
+  data-reveal="up"
+>
+  <div class="relative aspect-[16/10] overflow-hidden bg-brand-primary-lightest">
+    {coverImage && (
+      <img
+        src={mediaUrl(coverImage)}
+        alt=""
+        loading="lazy"
+        class="h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
+      />
+    )}
+    {featured && (
+      <span class="absolute left-3 top-3 rounded-full bg-brand-pink px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-white">Destacado</span>
+    )}
+  </div>
+  <div class="flex flex-1 flex-col p-6">
+    {visibleTags.length > 0 && (
+      <p class="mb-2 text-overline uppercase text-accent">{visibleTags.join(" · ")}</p>
+    )}
+    <h2 class="text-subtitle-lg text-content">{title}</h2>
+    {excerpt && <p class="mt-2 flex-1 text-body-sm text-content-muted">{excerpt}</p>}
+    <div class="mt-6 flex items-center justify-between gap-4 border-t border-line pt-4">
+      <span class="text-caption-md text-content-subtle">{meta}</span>
+      <span class="flex h-9 w-9 shrink-0 -rotate-45 items-center justify-center rounded-full bg-brand-primary text-white transition-transform duration-500 ease-in-out-sharp group-hover:rotate-0" aria-hidden="true">
+        <ArrowIcon />
+      </span>
+    </div>
+  </div>
+</a>
